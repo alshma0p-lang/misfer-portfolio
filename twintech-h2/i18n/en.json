@@ -1,0 +1,266 @@
+{
+  "meta": {
+    "placeholders": [
+      "{early_warning_hours}",
+      "{early_warning_hours_ar}",
+      "{unplanned_stops_rate}",
+      "{unplanned_stops_rate_ar}",
+      "{cell_alert_lead}",
+      "{cell_alert_lead_ar}",
+      "{cell_micro_kpi}",
+      "{cell_micro_kpi_ar}",
+      "{stack_excursion_rate}",
+      "{stack_excursion_rate_ar}",
+      "{stack_uptime_gain}",
+      "{stack_uptime_gain_ar}",
+      "{stack_micro_kpi}",
+      "{stack_micro_kpi_ar}",
+      "{bop_fft_peak}",
+      "{bop_fft_peak_ar}",
+      "{bop_mtbf_gain}",
+      "{bop_mtbf_gain_ar}",
+      "{bop_micro_kpi}",
+      "{bop_micro_kpi_ar}",
+      "{fleet_learning_days}",
+      "{fleet_learning_days_ar}",
+      "{fleet_micro_kpi}",
+      "{fleet_micro_kpi_ar}",
+      "{soe_stability}",
+      "{soe_stability_ar}",
+      "{soe_micro_kpi}",
+      "{soe_micro_kpi_ar}",
+      "{reason_ack_rate}",
+      "{reason_ack_rate_ar}",
+      "{reason_ack_time}",
+      "{reason_ack_time_ar}",
+      "{reason_micro_kpi}",
+      "{reason_micro_kpi_ar}",
+      "{availability_gain}",
+      "{availability_gain_ar}",
+      "{efficiency_stability}",
+      "{efficiency_stability_ar}",
+      "{false_alarm_rate}",
+      "{false_alarm_rate_ar}",
+      "{data_ingest_scope}",
+      "{data_ingest_scope_ar}",
+      "{calibration_days}",
+      "{calibration_days_ar}",
+      "{pilot_review_cadence}",
+      "{pilot_review_cadence_ar}",
+      "{pilot_success_kpi}",
+      "{pilot_success_kpi_ar}",
+      "{network_topology}",
+      "{network_topology_ar}",
+      "{fleet_learning_days}",
+      "{pilot_exit_report}",
+      "{pilot_exit_report_ar}",
+      "{contact_response_sla}",
+      "{contact_response_sla_ar}",
+      "{cell_pain_placeholder}"
+    ]
+  },
+  "nav": {
+    "home": "Home",
+    "solution": "Solution",
+    "demo": "Demo",
+    "pilot": "90-Day Pilot",
+    "security": "Security",
+    "resources": "Resources",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "TwinTech-H₂ keeps every cell in-spec before it drifts",
+    "subtitle": "Predictive digital twin for ACWA Power electrolyzers delivering {early_warning_hours} advance notice and bilingual reasoning your operators trust.",
+    "cta": "Launch the 90-day pilot"
+  },
+  "problem": {
+    "title": "Why electrolyzer downtime persists",
+    "cards": [
+      {
+        "title": "Unplanned downtime",
+        "body": "Unplanned stops inflate hydrogen cost while {unplanned_stops_rate} placeholder incidents stay unexplained."
+      },
+      {
+        "title": "Low-load stress",
+        "body": "Membranes face stress without SOE visibility, forcing conservative output and higher OPEX."
+      },
+      {
+        "title": "Explainability gap",
+        "body": "Teams juggle spreadsheets instead of bilingual alerts that cite cause, evidence, and recommended action."
+      }
+    ]
+  },
+  "solution": {
+    "title": "Six integrated modules tuned for ACWA Power",
+    "modules": [
+      {
+        "name": "Cell-Twin",
+        "pain": "Pain: {cell_pain_placeholder}",
+        "capability": "Capability: Detect ΔV_cell and σᵥ anomalies with adaptive baselines per cell.",
+        "benefit": "Benefit: {cell_alert_lead} lead time before stack imbalance.",
+        "kpi": "{cell_micro_kpi}"
+      },
+      {
+        "name": "Stack-Twin",
+        "pain": "Pain: Purity and differential pressure swings hide inside daily averages.",
+        "capability": "Capability: Fuse physics models with historian trends to flag {stack_excursion_rate} excursions.",
+        "benefit": "Benefit: Maintains {stack_uptime_gain} uptime uplift with bilingual advisories.",
+        "kpi": "{stack_micro_kpi}"
+      },
+      {
+        "name": "BoP-Twin",
+        "pain": "Pain: Pumps and chillers fail quietly between manual inspections.",
+        "capability": "Capability: FFT vibration analytics surface {bop_fft_peak} spike signatures.",
+        "benefit": "Benefit: Plans {bop_mtbf_gain} MTBF gains without false alarms.",
+        "kpi": "{bop_micro_kpi}"
+      },
+      {
+        "name": "Fleet-Twin",
+        "pain": "Pain: Each site relearns the same failure signatures.",
+        "capability": "Capability: Cross-site learning transfers verified signatures within {fleet_learning_days} days.",
+        "benefit": "Benefit: Shared intelligence accelerates Vision 2030 deployment.",
+        "kpi": "{fleet_micro_kpi}"
+      },
+      {
+        "name": "SOE Autopilot",
+        "pain": "Pain: Operators juggle purge and hold sequences manually at low load.",
+        "capability": "Capability: Automates hold/purge commands tied to the safe operating envelope.",
+        "benefit": "Benefit: Maintains {soe_stability} compliance inside the safe band.",
+        "kpi": "{soe_micro_kpi}"
+      },
+      {
+        "name": "Reason Chips",
+        "pain": "Pain: Alerts lack bilingual evidence for crews on shift.",
+        "capability": "Capability: Bilingual chips map alert → cause → recommended work order.",
+        "benefit": "Benefit: Enables {reason_ack_rate} operator acknowledgement within {reason_ack_time}.",
+        "kpi": "{reason_micro_kpi}"
+      }
+    ]
+  },
+  "kpi": {
+    "title": "KPIs you can defend",
+    "copy": "Pilot projections indicate {availability_gain} availability gain, {efficiency_stability} efficiency stability, and {false_alarm_rate} false alarm placeholder.",
+    "badges": [
+      {
+        "label": "Early-warning lead time",
+        "value": "{early_warning_hours}"
+      },
+      {
+        "label": "Availability uplift",
+        "value": "{availability_gain}"
+      },
+      {
+        "label": "False alarm rate",
+        "value": "{false_alarm_rate}"
+      },
+      {
+        "label": "kWh/kg H₂ stability",
+        "value": "{efficiency_stability}"
+      }
+    ]
+  },
+  "demo": {
+    "title": "Live demo walkthrough",
+    "charts": [
+      {
+        "title": "ΔV_cell trend with variance band",
+        "caption": "Inspect bilingual tooltips referencing σᵥ variance."
+      },
+      {
+        "title": "Safe operating envelope band",
+        "caption": "Setpoint, hold, and purge advisories adapt per language toggle."
+      },
+      {
+        "title": "BoP pump FFT spectrum",
+        "caption": "{bop_fft_peak} spike placeholder highlights bearing signature."
+      }
+    ],
+    "reason": {
+      "title": "Reason Chips",
+      "items": [
+        "Cell imbalance → investigate electrolyte",
+        "Low-load risk → raise to safe band",
+        "Pump vibration → schedule bearing check"
+      ]
+    }
+  },
+  "security": {
+    "title": "Security & compliance",
+    "copy": "Architecture respects ISO 22734-1:2025, IEC 62443 zones, and PDPL/NDMO governance with {data_ingest_scope} read-only connectors.",
+    "badges": [
+      "On-prem edge only",
+      "Read-only OPC/PI",
+      "IEC 62443 zones",
+      "ISO 22734-1:2025",
+      "PDPL / NDMO aware"
+    ]
+  },
+  "pilot": {
+    "title": "Approve the 90-day pilot",
+    "steps": [
+      {
+        "title": "Access",
+        "body": "Grant read-only historian feeds for one stack and one DI pump."
+      },
+      {
+        "title": "Calibration",
+        "body": "Blend hackathon dataset with live data for {calibration_days}."
+      },
+      {
+        "title": "Validation",
+        "body": "Weekly {pilot_review_cadence} reviews align ops, I&C, and cyber teams."
+      },
+      {
+        "title": "Decision",
+        "body": "Sign off on {pilot_success_kpi} success KPIs."
+      }
+    ],
+    "ask": {
+      "title": "What we need",
+      "items": [
+        "Read-only access scope {data_ingest_scope}",
+        "Named operations sponsor",
+        "Weekly {pilot_review_cadence} review cadence",
+        "Pilot bay with cyber-approved laptop"
+      ]
+    }
+  },
+  "resources": {
+    "title": "Resources",
+    "deck": "Download the TwinTech-H₂ briefing deck (PDF placeholder).",
+    "faq": [
+      {
+        "q": "Does TwinTech-H₂ need outbound internet?",
+        "a": "No. Deployment stays on-prem with {network_topology} segregation."
+      },
+      {
+        "q": "How quickly do crews trust the insights?",
+        "a": "Historical data plus {fleet_learning_days} days of bilingual tuning builds trust."
+      },
+      {
+        "q": "What happens after the pilot?",
+        "a": "Teams review {pilot_exit_report} documented KPIs and decide expansion scope."
+      }
+    ]
+  },
+  "contact": {
+    "title": "Request pilot access",
+    "copy": "Complete the secure form; our bilingual reliability lead responds within {contact_response_sla}.",
+    "fields": {
+      "name": "Name",
+      "email": "Work email",
+      "company": "Company",
+      "role": "Role",
+      "message": "Message",
+      "rolePlaceholder": "Select role"
+    },
+    "roles": ["Operations", "Reliability", "I&C Engineer", "Cyber security", "Executive"],
+    "submit": "Submit request"
+  },
+  "footer": {
+    "privacy": "Privacy policy",
+    "terms": "Terms of service",
+    "download": "Download deck",
+    "copy": "© 2025 TwinTech-H₂. Prototype for ACWA Power."
+  }
+}

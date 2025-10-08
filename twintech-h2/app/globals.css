@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  font-family: var(--font-inter), system-ui, sans-serif;
+}
+
+body[dir="rtl"],
+html[dir="rtl"] body {
+  font-family: var(--font-noto-kufi), var(--font-inter), system-ui, sans-serif;
+}
+
+main {
+  min-height: 100vh;
+}
+
+#chart-tooltip {
+  position: fixed;
+  pointer-events: none;
+  padding: 0.45rem 0.75rem;
+  border-radius: 0.75rem;
+  background: rgba(24, 24, 27, 0.9);
+  color: white;
+  font-size: 0.75rem;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  z-index: 60;
+}

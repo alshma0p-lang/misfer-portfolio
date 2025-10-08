@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TwinTech-H₂ Prototype</title>
+  <meta name="description" content="TwinTech-H₂ predictive digital twin for ACWA Power electrolyzers with bilingual UX and interactive demo." />
+  <meta property="og:title" content="TwinTech-H₂ Prototype" />
+  <meta property="og:description" content="Predictive electrolyzer digital twin with {early_warning_hours} early-warning placeholder." />
+  <meta property="og:type" content="website" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    :root {
+      --primary-50: #EBF5FF;
+      --primary-100: #D6EBFF;
+      --primary-200: #ADD6FF;
+      --primary-500: #3399FF;
+      --primary-600: #0A7FFF;
+      --primary-700: #0066CC;
+      --primary-900: #003366;
+      --accent-500: #FF6666;
+      --success-500: #22C55E;
+      --warning-500: #F59E0B;
+      --danger-500: #EF4444;
+      --neutral-50: #FAFAFA;
+      --neutral-100: #F4F4F5;
+      --neutral-200: #E4E4E7;
+      --neutral-300: #D4D4D8;
+      --neutral-500: #71717A;
+      --neutral-700: #3F3F46;
+      --neutral-900: #18181B;
+      --font-en: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-ar: 'Noto Kufi Arabic', 'Inter', -apple-system, sans-serif;
+      color-scheme: light;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: var(--font-en);
+      color: var(--neutral-900);
+      background: var(--neutral-50);
+      line-height: 1.6;
+    }
+    body.rtl { font-family: var(--font-ar); }
+    a { color: inherit; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+    header { position: sticky; top: 0; background: #fff; z-index: 100; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; }
+    .logo { font-size: 1.5rem; font-weight: 700; color: var(--primary-700); text-decoration: none; }
+    .nav-links { display: flex; gap: 1rem; list-style: none; padding: 0; margin: 0; }
+    .nav-links a { font-weight: 500; padding: 0.5rem 0.75rem; border-radius: 0.75rem; text-decoration: none; color: var(--neutral-700); }
+    .nav-links a:focus-visible { outline: 3px solid var(--primary-500); outline-offset: 2px; }
+    .nav-links a:hover { color: var(--primary-700); }
+    .lang-toggle { border: 1px solid var(--primary-200); background: var(--primary-50); color: var(--primary-700); padding: 0.5rem 1rem; border-radius: 0.75rem; cursor: pointer; font-weight: 600; }
+    .hero { position: relative; overflow: hidden; background: linear-gradient(135deg, var(--primary-900), var(--primary-600)); color: #fff; padding: 6rem 0; }
+    .hero h1 { font-size: clamp(2.25rem, 4vw, 3.5rem); margin-bottom: 1rem; line-height: 1.2; }
+    .hero p { font-size: 1.25rem; max-width: 640px; }
+    .btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; background: var(--accent-500); color: #fff; padding: 0.9rem 1.75rem; border-radius: 999px; font-weight: 600; text-decoration: none; box-shadow: 0 14px 30px rgba(255,102,102,0.25); transition: transform 0.2s ease, box-shadow 0.2s ease; }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 20px 36px rgba(255,102,102,0.3); }
+    section { padding: 5rem 0; }
+    h2.section-title { font-size: clamp(2rem, 3vw, 2.75rem); text-align: center; margin-bottom: 3rem; color: var(--neutral-900); }
+    .grid { display: grid; gap: 1.5rem; }
+    .grid-cols-3 { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+    .card { background: #fff; border-radius: 1.25rem; padding: 1.75rem; border: 1px solid var(--neutral-200); box-shadow: 0 10px 24px rgba(0,0,0,0.06); display: flex; flex-direction: column; gap: 0.75rem; }
+    .card h3 { margin: 0; font-size: 1.35rem; color: var(--primary-700); }
+    .badge { display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.35rem 0.75rem; border-radius: 999px; background: var(--success-500); color: #fff; font-size: 0.85rem; font-weight: 600; }
+    .kpi-grid { display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+    .kpi-card { background: var(--primary-50); border-radius: 1.25rem; padding: 2rem; text-align: center; border: 1px solid var(--primary-200); }
+    .kpi-value { font-size: 2.75rem; font-weight: 700; color: var(--primary-700); margin-bottom: 0.5rem; }
+    .timeline { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
+    .timeline-card { background: #fff; border-radius: 1.25rem; padding: 1.5rem; border: 1px solid var(--neutral-200); }
+    .timeline-step { width: 52px; height: 52px; border-radius: 50%; background: var(--primary-600); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; margin-bottom: 1rem; }
+    .compliance-tags { display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; }
+    .tag { border: 1.5px solid var(--primary-500); padding: 0.5rem 1rem; border-radius: 999px; font-weight: 600; background: var(--primary-50); color: var(--primary-700); display: inline-flex; align-items: center; gap: 0.5rem; }
+    .reason-chip { display: inline-flex; align-items: center; gap: 0.5rem; border-radius: 999px; padding: 0.5rem 1rem; color: #fff; font-weight: 600; cursor: pointer; margin: 0.25rem; transition: transform 0.2s ease; border: none; }
+    .reason-chip:hover, .reason-chip:focus-visible { transform: translateY(-2px); outline: none; box-shadow: 0 12px 24px rgba(0,0,0,0.15); }
+    .reason-chip[data-level="critical"] { background: var(--danger-500); }
+    .reason-chip[data-level="warning"] { background: var(--warning-500); color: #18181B; }
+    .reason-chip[data-level="normal"] { background: var(--success-500); }
+    .form { max-width: 560px; margin: 0 auto; background: #fff; padding: 2rem; border-radius: 1.25rem; border: 1px solid var(--neutral-200); box-shadow: 0 12px 24px rgba(0,0,0,0.08); }
+    label { display: block; font-weight: 600; margin-bottom: 0.5rem; }
+    input, select, textarea { width: 100%; padding: 0.75rem 1rem; border-radius: 0.75rem; border: 1px solid var(--neutral-300); font-size: 1rem; font-family: inherit; transition: border 0.2s ease, box-shadow 0.2s ease; }
+    input:focus-visible, select:focus-visible, textarea:focus-visible { border-color: var(--primary-500); outline: none; box-shadow: 0 0 0 3px rgba(51,153,255,0.2); }
+    footer { background: var(--neutral-900); color: #fff; padding: 2.5rem 0; }
+    footer a { color: var(--neutral-200); text-decoration: none; }
+    footer a:hover { color: #fff; }
+    .footer-links { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 1rem; }
+    .toast { position: fixed; inset-inline-end: 1.5rem; bottom: 1.5rem; background: var(--success-500); color: #fff; padding: 1rem 1.5rem; border-radius: 0.85rem; box-shadow: 0 12px 24px rgba(0,0,0,0.2); opacity: 0; transform: translateY(16px); transition: opacity 0.3s ease, transform 0.3s ease; max-width: 320px; }
+    .toast.show { opacity: 1; transform: translateY(0); }
+    .chart-card { position: relative; background: #fff; border-radius: 1.25rem; padding: 1.75rem; border: 1px solid var(--neutral-200); box-shadow: 0 16px 32px rgba(0,0,0,0.08); margin-bottom: 2rem; }
+    .chart-title { font-size: 1.35rem; font-weight: 600; margin-bottom: 1rem; }
+    svg.chart { width: 100%; height: auto; }
+    .chart-tooltip { position: fixed; pointer-events: none; padding: 0.45rem 0.75rem; background: rgba(24,24,27,0.92); color: #fff; border-radius: 0.65rem; font-size: 0.85rem; opacity: 0; transition: opacity 0.2s ease; z-index: 150; }
+    .faq { max-width: 800px; margin: 0 auto; }
+    details { background: #fff; border-radius: 1rem; border: 1px solid var(--neutral-200); margin-bottom: 1rem; padding: 1rem 1.25rem; }
+    summary { cursor: pointer; font-weight: 600; }
+    summary:focus-visible { outline: 3px solid var(--primary-500); border-radius: 0.75rem; }
+    @media (max-width: 720px) {
+      nav { flex-wrap: wrap; gap: 1rem; }
+      .nav-links { flex-wrap: wrap; justify-content: center; }
+      .hero { padding: 4rem 0; }
+      section { padding: 4rem 0; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav aria-label="Main navigation">
+        <a class="logo" href="#home" data-i18n="logo">TwinTech-H₂</a>
+        <ul class="nav-links">
+          <li><a href="#home" data-i18n="nav.home">Home</a></li>
+          <li><a href="#problem" data-i18n="nav.problem">Problem</a></li>
+          <li><a href="#solution" data-i18n="nav.solution">Solution</a></li>
+          <li><a href="#demo" data-i18n="nav.demo">Demo</a></li>
+          <li><a href="#compliance" data-i18n="nav.security">Security</a></li>
+          <li><a href="#pilot" data-i18n="nav.pilot">90-Day Pilot</a></li>
+          <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+        </ul>
+        <button class="lang-toggle" id="langToggle" type="button" aria-label="Toggle language">عربي</button>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <section id="home" class="hero" role="region" aria-labelledby="heroTitle">
+      <div class="container">
+        <h1 id="heroTitle" data-i18n="hero.title">Digital twin visibility for every electrolyzer cell</h1>
+        <p data-i18n="hero.subtitle">Deliver {early_warning_hours} early-warning placeholder with explainable bilingual Reason Chips across ACWA Power stacks.</p>
+        <a class="btn-primary" href="#pilot" data-i18n="hero.cta">Launch the 90-day pilot</a>
+      </div>
+    </section>
+
+    <section id="problem" aria-labelledby="problemTitle">
+      <div class="container">
+        <h2 class="section-title" id="problemTitle" data-i18n="problem.title">The challenge</h2>
+        <div class="grid grid-cols-3">
+          <article class="card" aria-label="Unplanned downtime">
+            <h3 data-i18n="problem.cards.0.title">Unplanned downtime</h3>
+            <p data-i18n="problem.cards.0.body">Unplanned stops inflate hydrogen cost while {unplanned_stops_rate} placeholder incidents stay unexplained.</p>
+          </article>
+          <article class="card" aria-label="Low-load risk">
+            <h3 data-i18n="problem.cards.1.title">Low-load risk</h3>
+            <p data-i18n="problem.cards.1.body">Membranes face stress without SOE insight, exposing reliability and I&amp;C teams to avoidable risk.</p>
+          </article>
+          <article class="card" aria-label="Explainability gap">
+            <h3 data-i18n="problem.cards.2.title">Explainability gap</h3>
+            <p data-i18n="problem.cards.2.body">Operators juggle spreadsheets instead of bilingual alerts that cite cause, evidence, and action.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="solution" aria-labelledby="solutionTitle" style="background: var(--neutral-100);">
+      <div class="container">
+        <h2 class="section-title" id="solutionTitle" data-i18n="solution.title">Six integrated modules</h2>
+        <div class="grid grid-cols-3">
+          <article class="card">
+            <h3 data-i18n="solution.modules.0.name">Cell-Twin</h3>
+            <p data-i18n="solution.modules.0.pain" class="text-sm" style="opacity:0.85;">Pain: {cell_pain_placeholder}</p>
+            <p data-i18n="solution.modules.0.capability">Capability: Detect ΔV_cell + σᵥ anomalies with adaptive baselines.</p>
+            <p data-i18n="solution.modules.0.benefit">Benefit: {cell_alert_lead} placeholder lead time before imbalance.</p>
+            <span class="badge" data-i18n="solution.modules.0.kpi">Micro-KPI: {cell_micro_kpi}</span>
+          </article>
+          <article class="card">
+            <h3 data-i18n="solution.modules.1.name">Stack-Twin</h3>
+            <p data-i18n="solution.modules.1.pain" class="text-sm" style="opacity:0.85;">Pain: Purity swings hidden in averages.</p>
+            <p data-i18n="solution.modules.1.capability">Capability: Fuse physics model + historian to flag {stack_excursion_rate} excursions.</p>
+            <p data-i18n="solution.modules.1.benefit">Benefit: Keeps stacks within safe {stack_uptime_gain} uptime placeholder.</p>
+            <span class="badge" data-i18n="solution.modules.1.kpi">Micro-KPI: {stack_micro_kpi}</span>
+          </article>
+          <article class="card">
+            <h3 data-i18n="solution.modules.2.name">BoP-Twin</h3>
+            <p data-i18n="solution.modules.2.pain" class="text-sm" style="opacity:0.85;">Pain: Pumps fail silently between inspections.</p>
+            <p data-i18n="solution.modules.2.capability">Capability: FFT vibration analytics surface {bop_fft_peak} spike placeholder.</p>
+            <p data-i18n="solution.modules.2.benefit">Benefit: Schedule bearings before {bop_mtbf_gain} MTBF loss.</p>
+            <span class="badge" data-i18n="solution.modules.2.kpi">Micro-KPI: {bop_micro_kpi}</span>
+          </article>
+          <article class="card">
+            <h3 data-i18n="solution.modules.3.name">Fleet-Twin</h3>
+            <p data-i18n="solution.modules.3.pain" class="text-sm" style="opacity:0.85;">Pain: Each site relearns failure signatures.</p>
+            <p data-i18n="solution.modules.3.capability">Capability: Cross-site learning transfers signatures in {fleet_learning_days} days.</p>
+            <p data-i18n="solution.modules.3.benefit">Benefit: Shared intelligence accelerates Vision 2030 scale-up.</p>
+            <span class="badge" data-i18n="solution.modules.3.kpi">Micro-KPI: {fleet_micro_kpi}</span>
+          </article>
+          <article class="card">
+            <h3 data-i18n="solution.modules.4.name">SOE Autopilot</h3>
+            <p data-i18n="solution.modules.4.pain" class="text-sm" style="opacity:0.85;">Pain: Operators manually juggle purge routines.</p>
+            <p data-i18n="solution.modules.4.capability">Capability: Automate hold/purge tied to safe operating envelope.</p>
+            <p data-i18n="solution.modules.4.benefit">Benefit: Maintains {soe_stability} safe band placeholder compliance.</p>
+            <span class="badge" data-i18n="solution.modules.4.kpi">Micro-KPI: {soe_micro_kpi}</span>
+          </article>
+          <article class="card">
+            <h3 data-i18n="solution.modules.5.name">Reason Chips</h3>
+            <p data-i18n="solution.modules.5.pain" class="text-sm" style="opacity:0.85;">Pain: Alerts lack bilingual evidence.</p>
+            <p data-i18n="solution.modules.5.capability">Capability: Alert → cause → action in EN/AR with numerals localized.</p>
+            <p data-i18n="solution.modules.5.benefit">Benefit: Drives {reason_ack_rate} acknowledgments under {reason_ack_time} placeholder.</p>
+            <span class="badge" data-i18n="solution.modules.5.kpi">Micro-KPI: {reason_micro_kpi}</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="kpi" aria-labelledby="kpiTitle">
+      <div class="container">
+        <h2 class="section-title" id="kpiTitle" data-i18n="kpi.title">KPIs you can defend</h2>
+        <p class="text-center" style="max-width:720px;margin:0 auto 2.5rem;" data-i18n="kpi.copy">Pilot projections indicate {availability_gain} availability gain, {efficiency_stability} efficiency stability, and {false_alarm_rate} false alarm placeholder.</p>
+        <div class="kpi-grid">
+          <div class="kpi-card" aria-live="polite">
+            <div class="kpi-value" data-i18n="kpi.badges.0.value">{early_warning_hours}</div>
+            <div data-i18n="kpi.badges.0.label">Early-warning lead time</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-value" data-i18n="kpi.badges.1.value">{availability_gain}</div>
+            <div data-i18n="kpi.badges.1.label">Availability uplift</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-value" data-i18n="kpi.badges.2.value">{false_alarm_rate}</div>
+            <div data-i18n="kpi.badges.2.label">False alarm rate</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-value" data-i18n="kpi.badges.3.value">{efficiency_stability}</div>
+            <div data-i18n="kpi.badges.3.label">kWh/kg H₂ stability</div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="demo" aria-labelledby="demoTitle" style="background: var(--neutral-100);">
+      <div class="container">
+        <h2 class="section-title" id="demoTitle" data-i18n="demo.title">Live demo walkthrough</h2>
+        <div class="chart-card">
+          <h3 class="chart-title" data-i18n="demo.charts.0.title">ΔV_cell trend with variance band</h3>
+          <svg class="chart" viewBox="0 0 800 320" role="img" aria-labelledby="cellChartTitle" id="cellChart"></svg>
+          <p data-i18n="demo.charts.0.caption">Hover to inspect bilingual tooltips referencing σᵥ variance.</p>
+        </div>
+        <div class="chart-card">
+          <h3 class="chart-title" data-i18n="demo.charts.1.title">Safe operating envelope band</h3>
+          <svg class="chart" viewBox="0 0 800 320" role="img" aria-labelledby="soeChartTitle" id="soeChart"></svg>
+          <p data-i18n="demo.charts.1.caption">Setpoint, hold, and purge advisories adapt by language toggle.</p>
+        </div>
+        <div class="chart-card">
+          <h3 class="chart-title" data-i18n="demo.charts.2.title">BoP pump FFT spectrum</h3>
+          <svg class="chart" viewBox="0 0 800 320" role="img" aria-labelledby="fftChartTitle" id="fftChart"></svg>
+          <p data-i18n="demo.charts.2.caption">120 Hz spike placeholder shows bearing fault signature.</p>
+        </div>
+        <div class="chart-card" aria-live="polite">
+          <h3 class="chart-title" data-i18n="demo.reason.title">Reason Chips</h3>
+          <div>
+            <button class="reason-chip" data-level="critical" data-reason="cell" type="button">⚠️ <span data-i18n="demo.reason.items.0">Cell imbalance → investigate electrolyte</span></button>
+            <button class="reason-chip" data-level="warning" data-reason="lowload" type="button">⚡ <span data-i18n="demo.reason.items.1">Low-load risk → raise to safe band</span></button>
+            <button class="reason-chip" data-level="normal" data-reason="pump" type="button">⚙️ <span data-i18n="demo.reason.items.2">Pump vibration → schedule bearing check</span></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="compliance" aria-labelledby="complianceTitle">
+      <div class="container">
+        <h2 class="section-title" id="complianceTitle" data-i18n="security.title">Security &amp; compliance posture</h2>
+        <p class="text-center" style="max-width:720px;margin:0 auto 2rem;" data-i18n="security.copy">Architecture respects ISO 22734-1:2025, IEC 62443 zones, and PDPL/NDMO governance with {data_ingest_scope} read-only connectors.</p>
+        <div class="compliance-tags" role="list">
+          <span class="tag" role="listitem" data-i18n="security.badges.0">On-prem edge only</span>
+          <span class="tag" role="listitem" data-i18n="security.badges.1">Read-only OPC/PI</span>
+          <span class="tag" role="listitem" data-i18n="security.badges.2">IEC 62443 zones</span>
+          <span class="tag" role="listitem" data-i18n="security.badges.3">ISO 22734-1:2025</span>
+          <span class="tag" role="listitem" data-i18n="security.badges.4">PDPL / NDMO aware</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="pilot" aria-labelledby="pilotTitle" style="background: var(--neutral-100);">
+      <div class="container">
+        <h2 class="section-title" id="pilotTitle" data-i18n="pilot.title">Approve the 90-day pilot</h2>
+        <div class="timeline">
+          <div class="timeline-card">
+            <div class="timeline-step">01</div>
+            <h3 data-i18n="pilot.steps.0.title">Access</h3>
+            <p data-i18n="pilot.steps.0.body">Grant read-only historian feeds for one stack and one DI pump.</p>
+          </div>
+          <div class="timeline-card">
+            <div class="timeline-step">02</div>
+            <h3 data-i18n="pilot.steps.1.title">Calibration</h3>
+            <p data-i18n="pilot.steps.1.body">Blend hackathon dataset with live data for {calibration_days} placeholder.</p>
+          </div>
+          <div class="timeline-card">
+            <div class="timeline-step">03</div>
+            <h3 data-i18n="pilot.steps.2.title">Validation</h3>
+            <p data-i18n="pilot.steps.2.body">Weekly {pilot_review_cadence} reviews align ops, I&amp;C, and cyber teams.</p>
+          </div>
+          <div class="timeline-card">
+            <div class="timeline-step">90</div>
+            <h3 data-i18n="pilot.steps.3.title">Decision</h3>
+            <p data-i18n="pilot.steps.3.body">Sign off on {pilot_success_kpi} placeholder success KPIs.</p>
+          </div>
+        </div>
+        <aside class="card" style="margin-top:2.5rem;" aria-labelledby="pilotAskTitle">
+          <h3 id="pilotAskTitle" data-i18n="pilot.ask.title">What we need</h3>
+          <ul style="margin:0;padding:0 1rem;">
+            <li data-i18n="pilot.ask.items.0">Read-only access scope {data_ingest_scope}</li>
+            <li data-i18n="pilot.ask.items.1">Named operations sponsor</li>
+            <li data-i18n="pilot.ask.items.2">Weekly {pilot_review_cadence} review cadence</li>
+            <li data-i18n="pilot.ask.items.3">Pilot bay with cyber-approved laptop</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section id="resources" aria-labelledby="resourcesTitle">
+      <div class="container">
+        <h2 class="section-title" id="resourcesTitle" data-i18n="resources.title">Resources</h2>
+        <div class="card" style="align-items:flex-start;">
+          <p data-i18n="resources.deck">Download the TwinTech-H₂ briefing deck (PDF placeholder).</p>
+          <div class="faq">
+            <details>
+              <summary data-i18n="faq.items.0.q">Does TwinTech-H₂ need outbound internet?</summary>
+              <p data-i18n="faq.items.0.a">No. Deployment stays on-prem with {network_topology} segregation.</p>
+            </details>
+            <details>
+              <summary data-i18n="faq.items.1.q">How quickly do crews trust the insights?</summary>
+              <p data-i18n="faq.items.1.a">Historical data plus {fleet_learning_days} days of bilingual tuning builds trust.</p>
+            </details>
+            <details>
+              <summary data-i18n="faq.items.2.q">What happens after the pilot?</summary>
+              <p data-i18n="faq.items.2.a">Review {pilot_exit_report} placeholder KPIs and define expansion scope.</p>
+            </details>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" aria-labelledby="contactTitle" style="background: var(--neutral-100);">
+      <div class="container">
+        <h2 class="section-title" id="contactTitle" data-i18n="contact.title">Request pilot access</h2>
+        <p class="text-center" style="max-width:660px;margin:0 auto 2rem;" data-i18n="contact.copy">Complete the secure form; our bilingual reliability lead responds within {contact_response_sla}.</p>
+        <form class="form" id="contactForm" novalidate>
+          <div class="field">
+            <label for="name" data-i18n="contact.fields.name">Name</label>
+            <input id="name" name="name" type="text" autocomplete="name" required />
+          </div>
+          <div class="field">
+            <label for="email" data-i18n="contact.fields.email">Work email</label>
+            <input id="email" name="email" type="email" autocomplete="email" required />
+          </div>
+          <div class="field">
+            <label for="company" data-i18n="contact.fields.company">Company</label>
+            <input id="company" name="company" type="text" autocomplete="organization" required />
+          </div>
+          <div class="field">
+            <label for="role" data-i18n="contact.fields.role">Role</label>
+            <select id="role" name="role" required>
+              <option value="" disabled selected data-i18n="contact.fields.rolePlaceholder">Select role</option>
+              <option value="operations" data-i18n="contact.roles.0">Operations</option>
+              <option value="reliability" data-i18n="contact.roles.1">Reliability</option>
+              <option value="ic" data-i18n="contact.roles.2">I&amp;C Engineer</option>
+              <option value="cyber" data-i18n="contact.roles.3">Cyber security</option>
+              <option value="executive" data-i18n="contact.roles.4">Executive</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="message" data-i18n="contact.fields.message">Message</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+          </div>
+          <button class="btn-primary" type="submit" data-i18n="contact.submit">Submit request</button>
+        </form>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="container">
+      <div class="footer-links">
+        <a href="#" data-i18n="footer.privacy">Privacy policy</a>
+        <a href="#" data-i18n="footer.terms">Terms of service</a>
+        <a href="#" data-i18n="footer.download">Download deck</a>
+      </div>
+      <p data-i18n="footer.copy">© 2025 TwinTech-H₂. Prototype for ACWA Power.</p>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <div class="chart-tooltip" id="chartTooltip" role="status" aria-hidden="true"></div>
+
+  <script>
+    const demoData = {
+      cellVoltage: [
+        { time: 0, value: 2.10, variance: 0.012 },
+        { time: 6, value: 2.09, variance: 0.013 },
+        { time: 12, value: 2.11, variance: 0.015 },
+        { time: 18, value: 2.16, variance: 0.032 },
+        { time: 24, value: 2.12, variance: 0.018 },
+        { time: 30, value: 2.10, variance: 0.014 },
+        { time: 36, value: 2.09, variance: 0.013 },
+        { time: 42, value: 2.11, variance: 0.015 },
+        { time: 48, value: 2.12, variance: 0.019 },
+        { time: 54, value: 2.14, variance: 0.022 }
+      ],
+      soe: [
+        { load: 15, state: 'purge' },
+        { load: 25, state: 'hold' },
+        { load: 40, state: 'safe' },
+        { load: 55, state: 'safe' },
+        { load: 70, state: 'safe' },
+        { load: 85, state: 'hold' },
+        { load: 95, state: 'purge' }
+      ],
+      fft: [
+        { freq: 30, amplitude: 25 },
+        { freq: 60, amplitude: 42 },
+        { freq: 90, amplitude: 36 },
+        { freq: 120, amplitude: 82 },
+        { freq: 150, amplitude: 30 },
+        { freq: 180, amplitude: 22 },
+        { freq: 210, amplitude: 15 }
+      ]
+    };
+
+    const translations = {
+      en: {
+        logo: 'TwinTech-H₂',
+        'nav.home': 'Home',
+        'nav.problem': 'Problem',
+        'nav.solution': 'Solution',
+        'nav.demo': 'Demo',
+        'nav.security': 'Security',
+        'nav.pilot': '90-Day Pilot',
+        'nav.contact': 'Contact',
+        'hero.title': 'Digital twin visibility for every electrolyzer cell',
+        'hero.subtitle': 'Deliver {early_warning_hours} early-warning placeholder with explainable bilingual Reason Chips across ACWA Power stacks.',
+        'hero.cta': 'Launch the 90-day pilot',
+        'problem.title': 'The challenge',
+        'problem.cards.0.title': 'Unplanned downtime',
+        'problem.cards.0.body': 'Unplanned stops inflate hydrogen cost while {unplanned_stops_rate} placeholder incidents stay unexplained.',
+        'problem.cards.1.title': 'Low-load risk',
+        'problem.cards.1.body': 'Membranes face stress without SOE insight, exposing reliability and I&C teams to avoidable risk.',
+        'problem.cards.2.title': 'Explainability gap',
+        'problem.cards.2.body': 'Operators juggle spreadsheets instead of bilingual alerts that cite cause, evidence, and action.',
+        'solution.title': 'Six integrated modules',
+        'solution.modules.0.name': 'Cell-Twin',
+        'solution.modules.0.pain': 'Pain: Cell drift hides until efficiency collapses.',
+        'solution.modules.0.capability': 'Capability: Detect ΔV_cell + σᵥ anomalies with adaptive baselines.',
+        'solution.modules.0.benefit': 'Benefit: {cell_alert_lead} placeholder lead time before imbalance.',
+        'solution.modules.0.kpi': 'Micro-KPI: {cell_micro_kpi}',
+        'solution.modules.1.name': 'Stack-Twin',
+        'solution.modules.1.pain': 'Pain: Purity swings hidden in averages.',
+        'solution.modules.1.capability': 'Capability: Fuse physics model + historian to flag {stack_excursion_rate} excursions.',
+        'solution.modules.1.benefit': 'Benefit: Keeps stacks within safe {stack_uptime_gain} uptime placeholder.',
+        'solution.modules.1.kpi': 'Micro-KPI: {stack_micro_kpi}',
+        'solution.modules.2.name': 'BoP-Twin',
+        'solution.modules.2.pain': 'Pain: Pumps fail silently between inspections.',
+        'solution.modules.2.capability': 'Capability: FFT vibration analytics surface {bop_fft_peak} spike placeholder.',
+        'solution.modules.2.benefit': 'Benefit: Schedule bearings before {bop_mtbf_gain} MTBF loss.',
+        'solution.modules.2.kpi': 'Micro-KPI: {bop_micro_kpi}',
+        'solution.modules.3.name': 'Fleet-Twin',
+        'solution.modules.3.pain': 'Pain: Each site relearns failure signatures.',
+        'solution.modules.3.capability': 'Capability: Cross-site learning transfers signatures in {fleet_learning_days} days.',
+        'solution.modules.3.benefit': 'Benefit: Shared intelligence accelerates Vision 2030 scale-up.',
+        'solution.modules.3.kpi': 'Micro-KPI: {fleet_micro_kpi}',
+        'solution.modules.4.name': 'SOE Autopilot',
+        'solution.modules.4.pain': 'Pain: Operators manually juggle purge routines.',
+        'solution.modules.4.capability': 'Capability: Automate hold/purge tied to safe operating envelope.',
+        'solution.modules.4.benefit': 'Benefit: Maintains {soe_stability} safe band placeholder compliance.',
+        'solution.modules.4.kpi': 'Micro-KPI: {soe_micro_kpi}',
+        'solution.modules.5.name': 'Reason Chips',
+        'solution.modules.5.pain': 'Pain: Alerts lack bilingual evidence.',
+        'solution.modules.5.capability': 'Capability: Alert → cause → action in EN/AR with numerals localized.',
+        'solution.modules.5.benefit': 'Benefit: Drives {reason_ack_rate} acknowledgments under {reason_ack_time} placeholder.',
+        'solution.modules.5.kpi': 'Micro-KPI: {reason_micro_kpi}',
+        'kpi.title': 'KPIs you can defend',
+        'kpi.copy': 'Pilot projections indicate {availability_gain} availability gain, {efficiency_stability} efficiency stability, and {false_alarm_rate} false alarm placeholder.',
+        'kpi.badges.0.value': '{early_warning_hours}',
+        'kpi.badges.0.label': 'Early-warning lead time',
+        'kpi.badges.1.value': '{availability_gain}',
+        'kpi.badges.1.label': 'Availability uplift',
+        'kpi.badges.2.value': '{false_alarm_rate}',
+        'kpi.badges.2.label': 'False alarm rate',
+        'kpi.badges.3.value': '{efficiency_stability}',
+        'kpi.badges.3.label': 'kWh/kg H₂ stability',
+        'demo.title': 'Live demo walkthrough',
+        'demo.charts.0.title': 'ΔV_cell trend with variance band',
+        'demo.charts.0.caption': 'Hover to inspect bilingual tooltips referencing σᵥ variance.',
+        'demo.charts.1.title': 'Safe operating envelope band',
+        'demo.charts.1.caption': 'Setpoint, hold, and purge advisories adapt by language toggle.',
+        'demo.charts.2.title': 'BoP pump FFT spectrum',
+        'demo.charts.2.caption': '120 Hz spike placeholder shows bearing fault signature.',
+        'demo.reason.title': 'Reason Chips',
+        'demo.reason.items.0': 'Cell imbalance → investigate electrolyte',
+        'demo.reason.items.1': 'Low-load risk → raise to safe band',
+        'demo.reason.items.2': 'Pump vibration → schedule bearing check',
+        'security.title': 'Security & compliance posture',
+        'security.copy': 'Architecture respects ISO 22734-1:2025, IEC 62443 zones, and PDPL/NDMO governance with {data_ingest_scope} read-only connectors.',
+        'security.badges.0': 'On-prem edge only',
+        'security.badges.1': 'Read-only OPC/PI',
+        'security.badges.2': 'IEC 62443 zones',
+        'security.badges.3': 'ISO 22734-1:2025',
+        'security.badges.4': 'PDPL / NDMO aware',
+        'pilot.title': 'Approve the 90-day pilot',
+        'pilot.steps.0.title': 'Access',
+        'pilot.steps.0.body': 'Grant read-only historian feeds for one stack and one DI pump.',
+        'pilot.steps.1.title': 'Calibration',
+        'pilot.steps.1.body': 'Blend hackathon dataset with live data for {calibration_days} placeholder.',
+        'pilot.steps.2.title': 'Validation',
+        'pilot.steps.2.body': 'Weekly {pilot_review_cadence} reviews align ops, I&C, and cyber teams.',
+        'pilot.steps.3.title': 'Decision',
+        'pilot.steps.3.body': 'Sign off on {pilot_success_kpi} placeholder success KPIs.',
+        'pilot.ask.title': 'What we need',
+        'pilot.ask.items.0': 'Read-only access scope {data_ingest_scope}',
+        'pilot.ask.items.1': 'Named operations sponsor',
+        'pilot.ask.items.2': 'Weekly {pilot_review_cadence} review cadence',
+        'pilot.ask.items.3': 'Pilot bay with cyber-approved laptop',
+        'resources.title': 'Resources',
+        'resources.deck': 'Download the TwinTech-H₂ briefing deck (PDF placeholder).',
+        'faq.items.0.q': 'Does TwinTech-H₂ need outbound internet?',
+        'faq.items.0.a': 'No. Deployment stays on-prem with {network_topology} segregation.',
+        'faq.items.1.q': 'How quickly do crews trust the insights?',
+        'faq.items.1.a': 'Historical data plus {fleet_learning_days} days of bilingual tuning builds trust.',
+        'faq.items.2.q': 'What happens after the pilot?',
+        'faq.items.2.a': 'Review {pilot_exit_report} placeholder KPIs and define expansion scope.',
+        'contact.title': 'Request pilot access',
+        'contact.copy': 'Complete the secure form; our bilingual reliability lead responds within {contact_response_sla}.',
+        'contact.fields.name': 'Name',
+        'contact.fields.email': 'Work email',
+        'contact.fields.company': 'Company',
+        'contact.fields.role': 'Role',
+        'contact.fields.rolePlaceholder': 'Select role',
+        'contact.fields.message': 'Message',
+        'contact.roles.0': 'Operations',
+        'contact.roles.1': 'Reliability',
+        'contact.roles.2': 'I&C Engineer',
+        'contact.roles.3': 'Cyber security',
+        'contact.roles.4': 'Executive',
+        'contact.submit': 'Submit request',
+        'footer.privacy': 'Privacy policy',
+        'footer.terms': 'Terms of service',
+        'footer.download': 'Download deck',
+        'footer.copy': '© 2025 TwinTech-H₂. Prototype for ACWA Power.'
+      },
+      ar: {
+        logo: 'TwinTech-H₂',
+        'nav.home': 'الرئيسية',
+        'nav.problem': 'التحدي',
+        'nav.solution': 'الحل',
+        'nav.demo': 'العرض التوضيحي',
+        'nav.security': 'الأمن والامتثال',
+        'nav.pilot': 'التجربة لـ 90 يوماً',
+        'nav.contact': 'اتصل بنا',
+        'hero.title': 'رؤية توأم رقمي لكل خلية محلل',
+        'hero.subtitle': 'يقدم إنذارات مبكرة قدرها {early_warning_hours_ar} مع شرائح سبب ثنائية اللغة عبر مكدسات أكوا باور.',
+        'hero.cta': 'ابدأ التجربة لمدة 90 يوماً',
+        'problem.title': 'التحدي',
+        'problem.cards.0.title': 'توقفات غير مخططة',
+        'problem.cards.0.body': 'ترفع التوقفات غير المخططة تكلفة الهيدروجين بينما تبقى حوادث {unplanned_stops_rate_ar} بلا تفسير.',
+        'problem.cards.1.title': 'مخاطر الحمل المنخفض',
+        'problem.cards.1.body': 'تتعرض الأغشية للإجهاد دون رؤية نطاق التشغيل الآمن، مما يعرض فرق الموثوقية والقياس للتحكم لمخاطر يمكن تجنبها.',
+        'problem.cards.2.title': 'فجوة التفسير',
+        'problem.cards.2.body': 'يتعامل المشغلون مع جداول بيانات بدلاً من تنبيهات ثنائية اللغة تذكر السبب والدليل والإجراء.',
+        'solution.title': 'ست وحدات متكاملة',
+        'solution.modules.0.name': 'توأم الخلية',
+        'solution.modules.0.pain': 'الألم: يظل انحراف الخلية مخفياً حتى ينهار الأداء.',
+        'solution.modules.0.capability': 'القدرة: كشف انحرافات ΔV_cell و σᵥ بخطوط أساس تكيفية.',
+        'solution.modules.0.benefit': 'الفائدة: مهلة قدرها {cell_alert_lead_ar} قبل اختلال المكدس.',
+        'solution.modules.0.kpi': 'المؤشر الدقيق: {cell_micro_kpi_ar}',
+        'solution.modules.1.name': 'توأم المكدس',
+        'solution.modules.1.pain': 'الألم: يتوارى تذبذب النقاء داخل المتوسطات.',
+        'solution.modules.1.capability': 'القدرة: دمج نموذج فيزيائي مع بيانات المؤرخ لرصد {stack_excursion_rate_ar} من الانحرافات.',
+        'solution.modules.1.benefit': 'الفائدة: يحافظ على {stack_uptime_gain_ar} من التوافر الآمن.',
+        'solution.modules.1.kpi': 'المؤشر الدقيق: {stack_micro_kpi_ar}',
+        'solution.modules.2.name': 'توأم توازن المصنع',
+        'solution.modules.2.pain': 'الألم: تتعطل المضخات بصمت بين الفحوصات.',
+        'solution.modules.2.capability': 'القدرة: تحليل اهتزاز FFT يبرز قمة {bop_fft_peak_ar} المؤقتة.',
+        'solution.modules.2.benefit': 'الفائدة: جدولة استبدال المحامل قبل خسارة {bop_mtbf_gain_ar} في MTBF.',
+        'solution.modules.2.kpi': 'المؤشر الدقيق: {bop_micro_kpi_ar}',
+        'solution.modules.3.name': 'توأم الأسطول',
+        'solution.modules.3.pain': 'الألم: كل موقع يعيد تعلم بصمات الأعطال.',
+        'solution.modules.3.capability': 'القدرة: مشاركة الأنماط بين المواقع خلال {fleet_learning_days_ar} يوماً.',
+        'solution.modules.3.benefit': 'الفائدة: ذكاء مشترك يسرع التوسع المتوافق مع رؤية 2030.',
+        'solution.modules.3.kpi': 'المؤشر الدقيق: {fleet_micro_kpi_ar}',
+        'solution.modules.4.name': 'الطيار الآلي SOE',
+        'solution.modules.4.pain': 'الألم: يدير المشغلون إجراءات التطهير يدوياً.',
+        'solution.modules.4.capability': 'القدرة: أتمتة التثبيت/التطهير المرتبط بنطاق التشغيل الآمن.',
+        'solution.modules.4.benefit': 'الفائدة: يحافظ على امتثال نطاق آمن قدره {soe_stability_ar}.',
+        'solution.modules.4.kpi': 'المؤشر الدقيق: {soe_micro_kpi_ar}',
+        'solution.modules.5.name': 'شرائح السبب',
+        'solution.modules.5.pain': 'الألم: التنبيهات تفتقر إلى دليل ثنائي اللغة.',
+        'solution.modules.5.capability': 'القدرة: تنبيه → سبب → إجراء باللغتين مع تكييف الأرقام.',
+        'solution.modules.5.benefit': 'الفائدة: يحقق معدل إقرار {reason_ack_rate_ar} خلال أقل من {reason_ack_time_ar}.',
+        'solution.modules.5.kpi': 'المؤشر الدقيق: {reason_micro_kpi_ar}',
+        'kpi.title': 'مؤشرات أداء يمكن الدفاع عنها',
+        'kpi.copy': 'تشير توقعات التجربة إلى تحسن توافر {availability_gain_ar} واستقرار كفاءة {efficiency_stability_ar} ومعدل إنذارات كاذبة {false_alarm_rate_ar}.',
+        'kpi.badges.0.value': '{early_warning_hours_ar}',
+        'kpi.badges.0.label': 'مهلة الإنذار المبكر',
+        'kpi.badges.1.value': '{availability_gain_ar}',
+        'kpi.badges.1.label': 'تحسن التوافر',
+        'kpi.badges.2.value': '{false_alarm_rate_ar}',
+        'kpi.badges.2.label': 'معدل الإنذارات الكاذبة',
+        'kpi.badges.3.value': '{efficiency_stability_ar}',
+        'kpi.badges.3.label': 'استقرار كيلوواط/كغ هيدروجين',
+        'demo.title': 'جولة العرض التوضيحي المباشر',
+        'demo.charts.0.title': 'اتجاه ΔV_cell مع نطاق التباين',
+        'demo.charts.0.caption': 'مرّر المؤشر لاستعراض تلميحات ثنائية اللغة تشير إلى تباين σᵥ.',
+        'demo.charts.1.title': 'نطاق التشغيل الآمن',
+        'demo.charts.1.caption': 'يتم تكييف نصائح التثبيت والتطهير حسب اللغة.',
+        'demo.charts.2.title': 'طيف FFT لمضخة توازن المصنع',
+        'demo.charts.2.caption': 'قمة 120 هرتز المؤقتة تشير إلى خلل المحمل.',
+        'demo.reason.title': 'شرائح السبب',
+        'demo.reason.items.0': 'اختلال الخلية → فحص الإلكتروليت',
+        'demo.reason.items.1': 'خطر الحمل المنخفض → رفع الحمل إلى النطاق الآمن',
+        'demo.reason.items.2': 'اهتزاز المضخة → جدولة فحص المحمل',
+        'security.title': 'الوضع الأمني والامتثال',
+        'security.copy': 'تحترم البنية ISO 22734-1:2025 و IEC 62443 و PDPL/NDMO مع موصلات للقراءة فقط ضمن {data_ingest_scope_ar}.',
+        'security.badges.0': 'حوسبة طرفية داخل الموقع',
+        'security.badges.1': 'موصلات OPC/PI للقراءة فقط',
+        'security.badges.2': 'مناطق IEC 62443',
+        'security.badges.3': 'ISO 22734-1:2025',
+        'security.badges.4': 'متوافق مع PDPL / NDMO',
+        'pilot.title': 'اعتمد التجربة لمدة 90 يوماً',
+        'pilot.steps.0.title': 'الوصول',
+        'pilot.steps.0.body': 'توفير تدفقات المؤرخ للقراءة فقط لمكدس واحد ومضخة DI واحدة.',
+        'pilot.steps.1.title': 'المعايرة',
+        'pilot.steps.1.body': 'دمج بيانات الهاكاثون مع البيانات الحية لمدة {calibration_days_ar}.',
+        'pilot.steps.2.title': 'التحقق',
+        'pilot.steps.2.body': 'مراجعات أسبوعية كل {pilot_review_cadence_ar} توحّد فرق العمليات والقياس والأمن.',
+        'pilot.steps.3.title': 'القرار',
+        'pilot.steps.3.body': 'اعتماد مؤشرات نجاح {pilot_success_kpi_ar}.',
+        'pilot.ask.title': 'ما نحتاجه',
+        'pilot.ask.items.0': 'نطاق وصول للقراءة فقط {data_ingest_scope_ar}',
+        'pilot.ask.items.1': 'راعٍ مسمى من العمليات',
+        'pilot.ask.items.2': 'اجتماعات مراجعة كل {pilot_review_cadence_ar}',
+        'pilot.ask.items.3': 'منطقة تجريبية مع حاسوب معتمد سيبرانياً',
+        'resources.title': 'المصادر',
+        'resources.deck': 'حمّل العرض التعريفي لـ TwinTech-H₂ (ملف PDF placeholder).',
+        'faq.items.0.q': 'هل يحتاج TwinTech-H₂ إلى إنترنت خارجي؟',
+        'faq.items.0.a': 'لا. يظل النشر داخل الموقع مع عزل شبكي {network_topology_ar}.',
+        'faq.items.1.q': 'كم يستغرق المشغلون للثقة في الرؤى؟',
+        'faq.items.1.a': 'البيانات التاريخية إضافة إلى {fleet_learning_days_ar} يوماً من الضبط ثنائي اللغة تبني الثقة.',
+        'faq.items.2.q': 'ماذا بعد انتهاء التجربة؟',
+        'faq.items.2.a': 'يتم مراجعة تقرير {pilot_exit_report_ar} لمؤشرات الأداء وتحديد نطاق التوسع.',
+        'contact.title': 'اطلب الوصول إلى التجربة',
+        'contact.copy': 'أكمل النموذج الآمن؛ يرد قائد الموثوقية ثنائي اللغة خلال {contact_response_sla_ar}.',
+        'contact.fields.name': 'الاسم',
+        'contact.fields.email': 'البريد الإلكتروني',
+        'contact.fields.company': 'الشركة',
+        'contact.fields.role': 'الدور',
+        'contact.fields.rolePlaceholder': 'اختر الدور',
+        'contact.fields.message': 'الرسالة',
+        'contact.roles.0': 'العمليات',
+        'contact.roles.1': 'الموثوقية',
+        'contact.roles.2': 'مهندس القياس والتحكم',
+        'contact.roles.3': 'الأمن السيبراني',
+        'contact.roles.4': 'تنفيذي',
+        'contact.submit': 'إرسال الطلب',
+        'footer.privacy': 'سياسة الخصوصية',
+        'footer.terms': 'شروط الخدمة',
+        'footer.download': 'تحميل العرض',
+        'footer.copy': '© 2025 TwinTech-H₂. نموذج أولي لأكوا باور.'
+      }
+    };
+
+    const easternDigits = ['٠','١','٢','٣','٤','٥','٦','٧','٨','٩'];
+    function localizeDigits(text, lang) {
+      if (lang !== 'ar') return text;
+      return text.replace(/[0-9]/g, d => easternDigits[Number(d)]);
+    }
+
+    const textNodes = document.querySelectorAll('[data-i18n]');
+    let currentLang = 'en';
+
+    function applyTranslations(lang) {
+      currentLang = lang;
+      document.documentElement.lang = lang;
+      document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+      document.body.classList.toggle('rtl', lang === 'ar');
+      textNodes.forEach(node => {
+        const key = node.dataset.i18n;
+        const value = translations[lang][key];
+        if (value) {
+          node.textContent = localizeDigits(value, lang);
+        }
+      });
+      document.getElementById('langToggle').textContent = lang === 'en' ? 'عربي' : 'English';
+      document.getElementById('langToggle').setAttribute('aria-label', lang === 'en' ? 'Switch to Arabic' : 'التبديل إلى الإنجليزية');
+      redrawCharts();
+    }
+
+    document.getElementById('langToggle').addEventListener('click', () => {
+      applyTranslations(currentLang === 'en' ? 'ar' : 'en');
+    });
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 4000);
+    }
+
+    document.getElementById('contactForm').addEventListener('submit', (event) => {
+      event.preventDefault();
+      const form = event.target;
+      const data = Object.fromEntries(new FormData(form).entries());
+      const missing = Object.entries(data).some(([key, value]) => !value && key !== 'role');
+      if (missing || !data.role) {
+        const message = currentLang === 'ar' ? 'يرجى إكمال جميع الحقول.' : 'Please complete all required fields.';
+        showToast(message);
+        return;
+      }
+      const successMessage = currentLang === 'ar' ? 'شكراً لك! سنعاود التواصل خلال {contact_response_sla_ar}.' : 'Thank you! Expect a reply within {contact_response_sla}.';
+      showToast(localizeDigits(successMessage, currentLang));
+      form.reset();
+    });
+
+    document.querySelectorAll('.reason-chip').forEach(button => {
+      button.addEventListener('click', () => {
+        const map = {
+          cell: {
+            en: 'Work order created: Inspect electrolyte balance on cells 23-25.',
+            ar: 'تم إنشاء أمر عمل: فحص توازن الإلكتروليت في الخلايا ٢٣-٢٥.'
+          },
+          lowload: {
+            en: 'Advisory: Raise load above safe threshold or initiate purge.',
+            ar: 'توجيه: رفع الحمل فوق الحد الآمن أو بدء التطهير.'
+          },
+          pump: {
+            en: 'Maintenance note: Schedule bearing replacement next outage.',
+            ar: 'ملاحظة صيانة: جدولة استبدال المحمل في التوقف القادم.'
+          }
+        };
+        const reason = button.dataset.reason;
+        const message = map[reason][currentLang];
+        showToast(message);
+      });
+    });
+
+    function drawAxes(svg, width, height, margin, rtl, labels = {}) {
+      const axisColor = '#71717A';
+      const x1 = margin.left;
+      const x2 = width - margin.right;
+      const y1 = height - margin.bottom;
+      const y2 = margin.top;
+      const axis = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+      const xAxis = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+      xAxis.setAttribute('x1', x1);
+      xAxis.setAttribute('y1', y1);
+      xAxis.setAttribute('x2', x2);
+      xAxis.setAttribute('y2', y1);
+      xAxis.setAttribute('stroke', axisColor);
+      xAxis.setAttribute('stroke-width', '2');
+      axis.appendChild(xAxis);
+      const yAxis = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+      yAxis.setAttribute('x1', x1);
+      yAxis.setAttribute('y1', y1);
+      yAxis.setAttribute('x2', x1);
+      yAxis.setAttribute('y2', y2);
+      yAxis.setAttribute('stroke', axisColor);
+      yAxis.setAttribute('stroke-width', '2');
+      axis.appendChild(yAxis);
+      if (labels.xLabel) {
+        const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        text.setAttribute('x', (x1 + x2) / 2);
+        text.setAttribute('y', height - margin.bottom + 32);
+        text.setAttribute('text-anchor', 'middle');
+        text.setAttribute('fill', axisColor);
+        text.textContent = labels.xLabel;
+        axis.appendChild(text);
+      }
+      if (labels.yLabel) {
+        const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        text.setAttribute('x', margin.left - 40);
+        text.setAttribute('y', (y2 + y1) / 2);
+        text.setAttribute('fill', axisColor);
+        text.setAttribute('transform', `rotate(-90 ${margin.left - 40} ${(y2 + y1) / 2})`);
+        text.textContent = labels.yLabel;
+        axis.appendChild(text);
+      }
+      svg.appendChild(axis);
+    }
+    function createGroup(svg, x, y) {
+      const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+      g.setAttribute('transform', `translate(${x}, ${y})`);
+      svg.appendChild(g);
+      return g;
+    }
+
+    function formatNumber(value, digits = 2) {
+      return currentLang === 'ar'
+        ? localizeDigits(value.toFixed(digits), 'ar')
+        : value.toFixed(digits);
+    }
+
+    const tooltip = document.getElementById('chartTooltip');
+    function showTooltip(event, text) {
+      tooltip.textContent = text;
+      tooltip.style.opacity = '1';
+      tooltip.style.left = `${event.clientX + 12}px`;
+      tooltip.style.top = `${event.clientY - 24}px`;
+    }
+    function hideTooltip() {
+      tooltip.style.opacity = '0';
+    }
+
+    function drawCellChart(svg) {
+      const width = 800; const height = 320; const margin = { top: 40, right: 32, bottom: 48, left: 60 };
+      const plotWidth = width - margin.left - margin.right;
+      const plotHeight = height - margin.top - margin.bottom;
+      const maxValue = Math.max(...demoData.cellVoltage.map(d => d.value + d.variance));
+      const minValue = Math.min(...demoData.cellVoltage.map(d => d.value - d.variance));
+      const xStep = plotWidth / (demoData.cellVoltage.length - 1);
+
+      drawAxes(svg, width, height, margin, currentLang === 'ar', { xLabel: currentLang === 'ar' ? 'الوقت (ساعة)' : 'Time (hours)', yLabel: currentLang === 'ar' ? 'الجهد (فولت)' : 'Voltage (V)' });
+
+      const band = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      const upper = demoData.cellVoltage.map((d, i) => `${i === 0 ? 'M' : 'L'}${margin.left + xStep * i},${margin.top + plotHeight - ((d.value + d.variance - minValue) / (maxValue - minValue)) * plotHeight}`);
+      const lower = demoData.cellVoltage.slice().reverse().map((d, i) => `L${margin.left + xStep * (demoData.cellVoltage.length - 1 - i)},${margin.top + plotHeight - ((d.value - d.variance - minValue) / (maxValue - minValue)) * plotHeight}`);
+      band.setAttribute('d', [...upper, ...lower, 'Z'].join(''));
+      band.setAttribute('fill', '#3399FF');
+      band.setAttribute('opacity', '0.18');
+      svg.appendChild(band);
+
+      const line = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      const path = demoData.cellVoltage.map((d, i) => `${i === 0 ? 'M' : 'L'}${margin.left + xStep * i},${margin.top + plotHeight - ((d.value - minValue) / (maxValue - minValue)) * plotHeight}`);
+      line.setAttribute('d', path.join(' '));
+      line.setAttribute('fill', 'none');
+      line.setAttribute('stroke', '#0066CC');
+      line.setAttribute('stroke-width', '3');
+      svg.appendChild(line);
+
+      demoData.cellVoltage.forEach((d, i) => {
+        const cx = margin.left + xStep * i;
+        const cy = margin.top + plotHeight - ((d.value - minValue) / (maxValue - minValue)) * plotHeight;
+        const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        circle.setAttribute('cx', cx);
+        circle.setAttribute('cy', cy);
+        circle.setAttribute('r', '6');
+        circle.setAttribute('fill', d.variance > 0.03 ? '#EF4444' : '#22C55E');
+        circle.addEventListener('mouseenter', (event) => showTooltip(event, `${formatNumber(d.value, 3)} V · σ=${formatNumber(d.variance, 3)}`));
+        circle.addEventListener('mouseleave', hideTooltip);
+        svg.appendChild(circle);
+      });
+    }
+
+    function drawSoeChart(svg) {
+      const width = 800; const height = 320; const margin = { top: 40, right: 32, bottom: 48, left: 60 };
+      drawAxes(svg, width, height, margin, currentLang === 'ar', { xLabel: currentLang === 'ar' ? 'الحمل (%)' : 'Load (%)', yLabel: currentLang === 'ar' ? 'الحالة' : 'State' });
+      const plotWidth = width - margin.left - margin.right;
+      const plotHeight = height - margin.top - margin.bottom;
+      const xScale = load => margin.left + (load / 100) * plotWidth;
+      const stateY = { purge: margin.top + plotHeight * 0.75, hold: margin.top + plotHeight * 0.5, safe: margin.top + plotHeight * 0.25 };
+
+      const safeRect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+      safeRect.setAttribute('x', margin.left + plotWidth * 0.2);
+      safeRect.setAttribute('y', margin.top + plotHeight * 0.2);
+      safeRect.setAttribute('width', plotWidth * 0.6);
+      safeRect.setAttribute('height', plotHeight * 0.6);
+      safeRect.setAttribute('fill', '#22C55E');
+      safeRect.setAttribute('opacity', '0.12');
+      svg.appendChild(safeRect);
+
+      const line = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      const path = demoData.soe.map((d, i) => `${i === 0 ? 'M' : 'L'}${xScale(d.load)},${stateY[d.state]}`);
+      line.setAttribute('d', path.join(' '));
+      line.setAttribute('fill', 'none');
+      line.setAttribute('stroke', '#0066CC');
+      line.setAttribute('stroke-width', '3');
+      svg.appendChild(line);
+
+      demoData.soe.forEach(d => {
+        const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        circle.setAttribute('cx', xScale(d.load));
+        circle.setAttribute('cy', stateY[d.state]);
+        const color = d.state === 'safe' ? '#22C55E' : d.state === 'hold' ? '#F59E0B' : '#EF4444';
+        circle.setAttribute('r', '8');
+        circle.setAttribute('fill', color);
+        circle.addEventListener('mouseenter', event => {
+          const labels = {
+            safe: currentLang === 'ar' ? 'النطاق الآمن' : 'Safe band',
+            hold: currentLang === 'ar' ? 'تثبيت' : 'Hold',
+            purge: currentLang === 'ar' ? 'تطهير' : 'Purge'
+          };
+          showTooltip(event, `${formatNumber(d.load)}% · ${labels[d.state]}`);
+        });
+        circle.addEventListener('mouseleave', hideTooltip);
+        svg.appendChild(circle);
+      });
+    }
+
+    function drawFftChart(svg) {
+      const width = 800; const height = 320; const margin = { top: 40, right: 32, bottom: 48, left: 60 };
+      drawAxes(svg, width, height, margin, currentLang === 'ar', { xLabel: currentLang === 'ar' ? 'التردد (Hz)' : 'Frequency (Hz)', yLabel: currentLang === 'ar' ? 'السعة' : 'Amplitude' });
+      const plotWidth = width - margin.left - margin.right;
+      const plotHeight = height - margin.top - margin.bottom;
+      const maxAmp = Math.max(...demoData.fft.map(d => d.amplitude));
+      const barWidth = plotWidth / demoData.fft.length - 12;
+      demoData.fft.forEach((d, i) => {
+        const bar = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+        const x = margin.left + i * (barWidth + 12);
+        const heightValue = (d.amplitude / maxAmp) * plotHeight;
+        bar.setAttribute('x', x);
+        bar.setAttribute('y', margin.top + plotHeight - heightValue);
+        bar.setAttribute('width', barWidth);
+        bar.setAttribute('height', heightValue);
+        bar.setAttribute('fill', d.freq === 120 ? '#EF4444' : '#3399FF');
+        bar.addEventListener('mouseenter', event => showTooltip(event, `${formatNumber(d.freq)} Hz · ${formatNumber(d.amplitude)} g`));
+        bar.addEventListener('mouseleave', hideTooltip);
+        svg.appendChild(bar);
+      });
+    }
+
+    function redrawCharts() {
+      document.getElementById('cellChart').replaceChildren();
+      document.getElementById('soeChart').replaceChildren();
+      document.getElementById('fftChart').replaceChildren();
+      drawCellChart(document.getElementById('cellChart'));
+      drawSoeChart(document.getElementById('soeChart'));
+      drawFftChart(document.getElementById('fftChart'));
+    }
+
+    applyTranslations('en');
+    redrawCharts();
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "TwinTech-H₂",
+    "url": "https://prototype.local/twintech-h2",
+    "publisher": {
+      "@type": "Organization",
+      "name": "TwinTech-H₂",
+      "sameAs": []
+    },
+    "about": {
+      "@type": "SoftwareApplication",
+      "name": "TwinTech-H₂ Digital Twin",
+      "applicationCategory": "IndustrialAutomation",
+      "operatingSystem": "On-premise",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/PreOrder"
+      }
+    }
+  }
+  </script>
+</body>
+</html>
