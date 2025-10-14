@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>بُرهان Burhān | Selective Proofs</title>
+  <!-- CSP: default-src 'self'; img-src 'self' data:; -->
+  <style>
+    :root {
+      color-scheme: light dark;
+      font-family: "IBM Plex Sans Arabic", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+      --brand-green: #0f6d3a;
+      --brand-navy: #0b2239;
+      --brand-copper: #b8946f;
+      --brand-sand: #f4efe8;
+      --ink: #101317;
+      --ink-2: #2b2f36;
+      --line: #dcdde1;
+      --white: #ffffff;
+      --success: var(--brand-green);
+      --warning: #c27c3a;
+      --danger: #ae2a2a;
+      --focus: #0049b0;
+      --shadow: rgba(16, 19, 23, 0.12);
+      --surface: var(--brand-sand);
+      --text: var(--brand-navy);
+      --secondary-text: var(--ink-2);
+      --cta-bg: var(--brand-green);
+      --cta-text: var(--white);
+      --card-bg: var(--white);
+      --outline: var(--focus);
+      --transition: 160ms ease;
+    }
+
+    [data-theme="dark"] {
+      --surface: var(--brand-navy);
+      --text: var(--brand-sand);
+      --secondary-text: #d5dde6;
+      --card-bg: #132a46;
+      --cta-bg: var(--brand-green);
+      --cta-text: var(--brand-sand);
+      --outline: #5ca9ff;
+    }
+
+    [data-theme="high-contrast"] {
+      --surface: var(--white);
+      --text: var(--ink);
+      --secondary-text: var(--ink-2);
+      --card-bg: var(--white);
+      --cta-bg: var(--brand-green);
+      --cta-text: var(--ink);
+      --outline: var(--ink);
+      box-shadow: none;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--surface);
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      transition: background var(--transition), color var(--transition);
+    }
+
+    body:focus-visible {
+      outline: none;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .skip-link {
+      position: absolute;
+      inset-inline-start: 1rem;
+      top: -4rem;
+      padding: 0.5rem 1rem;
+      background: var(--cta-bg);
+      color: var(--cta-text);
+      border-radius: 0.75rem;
+      transition: top var(--transition);
+      z-index: 1000;
+    }
+
+    .skip-link:focus {
+      top: 1rem;
+    }
+
+    header {
+      padding: 1.5rem 1.5rem 0.75rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 1.75rem;
+      line-height: 1.3;
+    }
+
+    .strapline {
+      margin: 0.25rem 0 0;
+      color: var(--secondary-text);
+      font-size: 1rem;
+    }
+
+    .toggles {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    button {
+      font: inherit;
+      border: none;
+      border-radius: 999px;
+      padding: 0.75rem 1.25rem;
+      background: var(--cta-bg);
+      color: var(--cta-text);
+      cursor: pointer;
+      min-width: 3.5rem;
+      min-height: 3rem;
+      transition: transform var(--transition), box-shadow var(--transition), background var(--transition), color var(--transition);
+    }
+
+    button:focus-visible {
+      outline: 3px solid var(--outline);
+      outline-offset: 3px;
+    }
+
+    button.secondary {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--line);
+    }
+
+    button.secondary[aria-pressed="true"],
+    button.toggle-active {
+      background: var(--brand-green);
+      color: var(--cta-text);
+      border-color: transparent;
+    }
+
+    main {
+      flex: 1;
+      padding: 0 1.5rem 2.5rem;
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .panel {
+      background: var(--card-bg);
+      border-radius: 1.25rem;
+      padding: 1.5rem;
+      box-shadow: 0 18px 32px -24px var(--shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      transition: background var(--transition), color var(--transition), box-shadow var(--transition);
+    }
+
+    .flows {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    @media (min-width: 960px) {
+      main {
+        grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      }
+      .flows {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    .flow-step {
+      border: 1px solid var(--line);
+      border-radius: 1rem;
+      padding: 1rem;
+      display: grid;
+      gap: 0.75rem;
+      background: linear-gradient(135deg, rgba(15, 109, 58, 0.08), transparent);
+    }
+
+    .flow-step h3 {
+      margin: 0;
+      font-size: 1.125rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+
+    .flow-step p {
+      margin: 0;
+      color: var(--secondary-text);
+      font-size: 0.95rem;
+    }
+
+    .flow-step .step-index {
+      inline-size: 2rem;
+      block-size: 2rem;
+      display: grid;
+      place-items: center;
+      border-radius: 999px;
+      background: var(--brand-green);
+      color: var(--cta-text);
+      font-weight: 600;
+    }
+
+    .verification-panel,
+    .generation-panel {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .status-card {
+      border-radius: 1rem;
+      border: 1px solid var(--line);
+      padding: 1rem;
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .status-card.success {
+      border-color: var(--success);
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--success) 25%, transparent);
+    }
+
+    .status-card.danger {
+      border-color: var(--danger);
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--danger) 20%, transparent);
+    }
+
+    .status-meta {
+      display: grid;
+      gap: 0.25rem;
+      font-size: 0.9rem;
+      color: var(--secondary-text);
+    }
+
+    .code-input {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    input {
+      font: inherit;
+      border-radius: 0.75rem;
+      border: 1px solid var(--line);
+      padding: 0.75rem 1rem;
+      min-width: 10ch;
+      min-height: 3rem;
+      background: var(--surface);
+      color: var(--text);
+      transition: border var(--transition), background var(--transition);
+    }
+
+    input:focus-visible {
+      outline: 3px solid var(--outline);
+      outline-offset: 3px;
+    }
+
+    .helper {
+      font-size: 0.85rem;
+      color: var(--secondary-text);
+    }
+
+    .qr-placeholder {
+      inline-size: 8rem;
+      block-size: 8rem;
+      border-radius: 0.75rem;
+      border: 2px dashed var(--brand-green);
+      display: grid;
+      place-items: center;
+      font-weight: 600;
+      margin-inline: auto;
+    }
+
+    .countdown {
+      font-weight: 600;
+      color: var(--brand-green);
+      display: flex;
+      gap: 0.5rem;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      border-radius: 999px;
+      padding: 0.25rem 0.75rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      background: rgba(11, 34, 57, 0.1);
+      color: var(--text);
+    }
+
+    .badge.success {
+      background: rgba(15, 109, 58, 0.12);
+      color: var(--success);
+    }
+
+    .badge.danger {
+      background: rgba(174, 42, 42, 0.14);
+      color: var(--danger);
+    }
+
+    .skeleton {
+      inline-size: 100%;
+      block-size: 3rem;
+      border-radius: 0.75rem;
+      background: linear-gradient(90deg, rgba(255,255,255,0), rgba(180, 190, 200, 0.18), rgba(255,255,255,0));
+      animation: shimmer 1.4s infinite;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    @keyframes shimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+
+    dialog {
+      border: none;
+      border-radius: 1.25rem;
+      padding: 0;
+      max-width: 28rem;
+      width: min(90vw, 28rem);
+      box-shadow: 0 20px 36px -24px var(--shadow);
+      background: var(--card-bg);
+      color: var(--text);
+    }
+
+    dialog::backdrop {
+      background: rgba(16, 19, 23, 0.32);
+      backdrop-filter: blur(4px);
+    }
+
+    .modal-content {
+      padding: 1.5rem;
+      display: grid;
+      gap: 1rem;
+    }
+
+    .modal-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .toast {
+      position: fixed;
+      inset-inline-end: 1rem;
+      inset-block-end: 1rem;
+      background: var(--brand-green);
+      color: var(--cta-text);
+      padding: 1rem 1.25rem;
+      border-radius: 1rem;
+      box-shadow: 0 12px 20px -16px var(--shadow);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      transform: translateY(150%);
+      transition: transform var(--transition);
+      max-width: 22rem;
+    }
+
+    .toast[data-visible="true"] {
+      transform: translateY(0);
+    }
+
+    footer {
+      padding: 1.5rem;
+      font-size: 0.8rem;
+      color: var(--secondary-text);
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    footer ol {
+      margin: 0;
+      padding-inline-start: 1.25rem;
+      display: grid;
+      gap: 0.4rem;
+    }
+
+    footer a {
+      color: inherit;
+      text-decoration: underline;
+    }
+
+    .lang-en [data-lang="ar"],
+    .lang-ar [data-lang="en"] {
+      display: none;
+    }
+
+    .meta-grid {
+      display: grid;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+    }
+
+    .meta-grid span {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.5rem;
+      border-bottom: 1px dashed rgba(15, 109, 58, 0.18);
+      padding-bottom: 0.2rem;
+    }
+
+    .meta-grid span strong {
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body class="lang-ar">
+  <a class="skip-link" href="#main">تخطى إلى المحتوى الرئيسي</a>
+  <header>
+    <div>
+      <h1 data-lang="ar">بُرهان الانتقائي</h1>
+      <h1 data-lang="en">Burhān Selective Proofs</h1>
+      <p class="strapline" data-lang="ar">توثيق ذكي وآمن لإثباتات حكومية في ثلاث نقرات</p>
+      <p class="strapline" data-lang="en">Trusted yes/no attestations for government in three clicks</p>
+    </div>
+    <div class="toggles" role="group" aria-label="خيارات العرض">
+      <button class="secondary" type="button" id="langToggle" aria-pressed="false" data-lang-label-ar="English" data-lang-label-en="العربية">English</button>
+      <button class="secondary" type="button" id="themeToggle" aria-pressed="false" data-lang="ar">وضع ليلي</button>
+      <button class="secondary" type="button" id="themeToggleEn" aria-pressed="false" data-lang="en">Dark mode</button>
+      <button class="secondary" type="button" id="contrastToggle" aria-pressed="false" data-lang="ar">تباين عالٍ</button>
+      <button class="secondary" type="button" id="contrastToggleEn" aria-pressed="false" data-lang="en">High contrast</button>
+    </div>
+  </header>
+  <main id="main">
+    <section class="panel generation-panel" aria-labelledby="generate-heading">
+      <div>
+        <h2 id="generate-heading" data-lang="ar">رحلة إنشاء الإثبات</h2>
+        <h2 id="generate-heading-en" data-lang="en">Generate Proof Journey</h2>
+        <p class="helper" data-lang="ar">٣ خطوات محسوبة لضمان التوافق مع PDPL وتقليل البيانات المتبادلة.</p>
+        <p class="helper" data-lang="en">Three deliberate steps to meet PDPL guardrails while minimizing shared data.</p>
+      </div>
+      <div class="flows">
+        <article class="flow-step">
+          <h3>
+            <span class="step-index">1</span>
+            <span data-lang="ar">تسجيل دخول نفاذ</span>
+            <span data-lang="en">Nafath Sign-in</span>
+          </h3>
+          <p data-lang="ar">تأكيد هوية مقدم الطلب دون مشاركة مستندات؛ يدعم بصمة وOTP.</p>
+          <p data-lang="en">Confirm applicant identity without raw documents; supports biometrics and OTP.</p>
+        </article>
+        <article class="flow-step">
+          <h3>
+            <span class="step-index">2</span>
+            <span data-lang="ar">تحديد صلاحية الشهادة</span>
+            <span data-lang="en">Select Credential Scope</span>
+          </h3>
+          <p data-lang="ar">اختيار نوع الإثبات ونافذة الصلاحية (نعم/لا) مع توضيح الغرض.</p>
+          <p data-lang="en">Choose proof type and validity window (yes/no) with stated purpose.</p>
+        </article>
+        <article class="flow-step">
+          <h3>
+            <span class="step-index">3</span>
+            <span data-lang="ar">موافقة PDPL وإصدار QR</span>
+            <span data-lang="en">PDPL Consent & QR Issue</span>
+          </h3>
+          <p data-lang="ar">إظهار الغرض والاحتفاظ والتخزين؛ بعد الموافقة يتم إصدار رمز سريع.</p>
+          <p data-lang="en">Purpose, retention, storage surfaced; upon consent a time-boxed code appears.</p>
+        </article>
+      </div>
+      <button type="button" id="startGenerate" aria-describedby="generate-desc">
+        <span data-lang="ar">ابدأ إنشاء الإثبات</span>
+        <span data-lang="en">Start proof generation</span>
+      </button>
+      <p class="helper" id="generate-desc" data-lang="ar">يحمي الخصوصية عبر اقتصاد في البيانات وقابلية الإلغاء الفوري.</p>
+      <p class="helper" id="generate-desc-en" data-lang="en">Privacy-by-design via data minimization and instant revocation.</p>
+      <div class="status-card" aria-live="polite" id="proofStatus">
+        <div class="skeleton" id="proofSkeleton" hidden></div>
+        <div id="proofContent">
+          <div class="qr-placeholder" aria-hidden="true">QR</div>
+          <p class="countdown" id="countdown" data-lang="ar">الرمز ينتهي خلال <span id="countdownValue">--</span></p>
+          <p class="countdown" id="countdownEn" data-lang="en">Code expires in <span id="countdownValueEn">--</span></p>
+          <div class="meta-grid" id="proofMeta"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel verification-panel" aria-labelledby="verify-heading">
+      <div>
+        <h2 id="verify-heading" data-lang="ar">رحلة التحقق</h2>
+        <h2 id="verify-heading-en" data-lang="en">Verification Journey</h2>
+        <p class="helper" data-lang="ar">يتطلب إدخال أو مسح رمز مكون من ٦ أحرف؛ الإجابة بنعم أو لا مع زمن الإصدار.</p>
+        <p class="helper" data-lang="en">Scan or input a six-character code; instant yes/no with issuance timeline.</p>
+      </div>
+      <form class="code-input" id="verifyForm" novalidate>
+        <label class="helper" for="codeInput" data-lang="ar">أدخل رمز Burhān</label>
+        <label class="helper" for="codeInput" data-lang="en">Enter Burhān code</label>
+        <input id="codeInput" name="code" inputmode="latin-prose" pattern="[A-Za-z0-9]{6}" maxlength="6" autocomplete="one-time-code" aria-describedby="codeHelp" required />
+        <button type="submit">
+          <span data-lang="ar">تحقق الآن</span>
+          <span data-lang="en">Verify now</span>
+        </button>
+        <p class="helper" id="codeHelp" data-lang="ar">لا حاجة لأي مستندات؛ يتم التحقق دون تخزين بيانات شخصية.</p>
+        <p class="helper" id="codeHelpEn" data-lang="en">No documents required; verification runs without storing personal data.</p>
+      </form>
+      <div class="status-card" id="verifyStatus" aria-live="polite">
+        <div class="helper" data-lang="ar">النتيجة ستظهر هنا بعد التحقق.</div>
+        <div class="helper" data-lang="en">Result will appear here after verification.</div>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="nafathModal" aria-labelledby="nafathTitle">
+    <div class="modal-content">
+      <h2 id="nafathTitle" data-lang="ar">تأكيد هوية نفاذ</h2>
+      <h2 id="nafathTitleEn" data-lang="en">Confirm Nafath Identity</h2>
+      <p data-lang="ar">سيتم إرسال إشعار موافقة إلى تطبيق نفاذ. لا يتم مشاركة بياناتك مع الجهة إلا بعد موافقتك.</p>
+      <p data-lang="en">A consent prompt is sent to the Nafath app. No personal data leaves until you approve.</p>
+      <div class="modal-actions">
+        <button type="button" class="secondary" data-close>
+          <span data-lang="ar">إلغاء</span>
+          <span data-lang="en">Cancel</span>
+        </button>
+        <button type="button" data-next>
+          <span data-lang="ar">استمرار</span>
+          <span data-lang="en">Continue</span>
+        </button>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog id="pdplModal" aria-labelledby="pdplTitle">
+    <div class="modal-content">
+      <h2 id="pdplTitle" data-lang="ar">موافقة الخصوصية (PDPL)</h2>
+      <h2 id="pdplTitleEn" data-lang="en">PDPL Consent Summary</h2>
+      <p data-lang="ar">الغرض: التحقق من صلاحية شهادة المورد. الاحتفاظ: ٩٠ يوماً لسجلات تقنية. لا نقل عابر للحدود.</p>
+      <p data-lang="en">Purpose: Supplier credential validity check. Retention: 90 days tech logs. No cross-border transfers.</p>
+      <ul class="helper">
+        <li data-lang="ar">البيانات المشتركة: نوع الإثبات، حالة (نعم/لا)، وقت الانتهاء.</li>
+        <li data-lang="en">Shared fields: proof type, yes/no status, expiry timestamp.</li>
+        <li data-lang="ar">يمكن إلغاء الإثبات في أي وقت عبر لوحة الجهة المصدرة.</li>
+        <li data-lang="en">Proof can be revoked anytime from issuer console.</li>
+      </ul>
+      <div class="modal-actions">
+        <button type="button" class="secondary" data-close>
+          <span data-lang="ar">رفض</span>
+          <span data-lang="en">Decline</span>
+        </button>
+        <button type="button" data-consent>
+          <span data-lang="ar">أوافق وأصدر</span>
+          <span data-lang="en">Approve & issue</span>
+        </button>
+      </div>
+    </div>
+  </dialog>
+
+  <div class="toast" role="status" aria-live="assertive" id="toast">
+    <span aria-hidden="true">✔</span>
+    <span data-lang="ar">تم إصدار إثبات Burhān بنجاح.</span>
+    <span data-lang="en">Burhān proof issued successfully.</span>
+  </div>
+
+  <script>
+    (function () {
+      const html = document.documentElement;
+      const body = document.body;
+      const langToggle = document.getElementById('langToggle');
+      const themeToggle = document.getElementById('themeToggle');
+      const themeToggleEn = document.getElementById('themeToggleEn');
+      const contrastToggle = document.getElementById('contrastToggle');
+      const contrastToggleEn = document.getElementById('contrastToggleEn');
+      const startGenerate = document.getElementById('startGenerate');
+      const nafathModal = document.getElementById('nafathModal');
+      const pdplModal = document.getElementById('pdplModal');
+      const proofSkeleton = document.getElementById('proofSkeleton');
+      const proofContent = document.getElementById('proofContent');
+      const proofMeta = document.getElementById('proofMeta');
+      const countdownValue = document.getElementById('countdownValue');
+      const countdownValueEn = document.getElementById('countdownValueEn');
+      const verifyForm = document.getElementById('verifyForm');
+      const codeInput = document.getElementById('codeInput');
+      const verifyStatus = document.getElementById('verifyStatus');
+      const toast = document.getElementById('toast');
+      let countdownInterval;
+
+      const proofData = {
+        issuer: 'الهيئة الرقمية الحكومية | Digital Government Authority',
+        proof_type: 'شهادة مورد معتمد | Certified Supplier Proof',
+        valid_from: new Date().toISOString(),
+        valid_to: new Date(Date.now() + 5 * 60 * 1000).toISOString(),
+        revocation_status: 'active',
+        code: 'BRH123',
+        status: 'yes'
+      };
+
+      function setTheme(mode) {
+        html.setAttribute('data-theme', mode);
+      }
+
+      function toggleTheme() {
+        const current = html.getAttribute('data-theme');
+        const next = current === 'dark' ? 'light' : 'dark';
+        setTheme(next);
+        const pressed = next === 'dark';
+        themeToggle.setAttribute('aria-pressed', pressed);
+        themeToggleEn.setAttribute('aria-pressed', pressed);
+      }
+
+      function toggleContrast() {
+        const current = html.getAttribute('data-theme');
+        if (current === 'high-contrast') {
+          setTheme('light');
+          contrastToggle.setAttribute('aria-pressed', false);
+          contrastToggleEn.setAttribute('aria-pressed', false);
+        } else {
+          setTheme('high-contrast');
+          contrastToggle.setAttribute('aria-pressed', true);
+          contrastToggleEn.setAttribute('aria-pressed', true);
+        }
+      }
+
+      function toggleLanguage() {
+        const isArabic = body.classList.toggle('lang-en');
+        if (body.classList.contains('lang-en')) {
+          body.classList.remove('lang-ar');
+          html.setAttribute('lang', 'en');
+          html.setAttribute('dir', 'ltr');
+          langToggle.textContent = langToggle.dataset.langLabelEn;
+          langToggle.setAttribute('aria-pressed', true);
+        } else {
+          body.classList.add('lang-ar');
+          html.setAttribute('lang', 'ar');
+          html.setAttribute('dir', 'rtl');
+          langToggle.textContent = langToggle.dataset.langLabelAr;
+          langToggle.setAttribute('aria-pressed', false);
+        }
+      }
+
+      function showModal(modal) {
+        if (typeof modal.showModal === 'function') {
+          modal.showModal();
+        }
+      }
+
+      function closeModal(modal) {
+        if (modal.open) {
+          modal.close();
+        }
+      }
+
+      function formatRelative(time) {
+        const target = new Date(time).getTime();
+        const diff = target - Date.now();
+        const totalSeconds = Math.max(0, Math.floor(diff / 1000));
+        const minutes = String(Math.floor(totalSeconds / 60)).padStart(2, '0');
+        const seconds = String(totalSeconds % 60).padStart(2, '0');
+        return `${minutes}:${seconds}`;
+      }
+
+      function updateProofMeta() {
+        const formatter = new Intl.DateTimeFormat(html.lang === 'ar' ? 'ar-SA' : 'en-GB', {
+          dateStyle: 'medium',
+          timeStyle: 'short'
+        });
+        proofMeta.innerHTML = '';
+        const details = [
+          { labelAr: 'الجهة المصدرة', labelEn: 'Issuer', value: proofData.issuer },
+          { labelAr: 'نوع الإثبات', labelEn: 'Proof type', value: proofData.proof_type },
+          { labelAr: 'الحالة', labelEn: 'Status', value: proofData.status === 'yes' ? 'نعم | Yes' : 'لا | No' },
+          { labelAr: 'صالح من', labelEn: 'Valid from', value: formatter.format(new Date(proofData.valid_from)) },
+          { labelAr: 'صالح إلى', labelEn: 'Valid to', value: formatter.format(new Date(proofData.valid_to)) },
+          { labelAr: 'رمز Burhān', labelEn: 'Burhān code', value: proofData.code },
+          { labelAr: 'إدارة الإلغاء', labelEn: 'Revocation', value: proofData.revocation_status === 'active' ? 'نشط | Active' : 'ملغي | Revoked' }
+        ];
+        details.forEach((item) => {
+          const span = document.createElement('span');
+          span.innerHTML = `<strong data-lang="ar">${item.labelAr}</strong><strong data-lang="en">${item.labelEn}</strong><span>${item.value}</span>`;
+          proofMeta.appendChild(span);
+        });
+      }
+
+      function startCountdown() {
+        clearInterval(countdownInterval);
+        function tick() {
+          const formatted = formatRelative(proofData.valid_to);
+          countdownValue.textContent = formatted;
+          countdownValueEn.textContent = formatted;
+          if (formatted === '00:00') {
+            clearInterval(countdownInterval);
+          }
+        }
+        tick();
+        countdownInterval = setInterval(tick, 1000);
+      }
+
+      function showToast() {
+        toast.dataset.visible = 'true';
+        setTimeout(() => {
+          toast.dataset.visible = 'false';
+        }, 3500);
+      }
+
+      function sanitize(value) {
+        return value.replace(/[^A-Za-z0-9]/g, '').toUpperCase();
+      }
+
+      function renderVerification(result) {
+        verifyStatus.innerHTML = '';
+        const card = document.createElement('div');
+        card.className = `status-card ${result.status === 'yes' ? 'success' : 'danger'}`;
+        const verdict = document.createElement('p');
+        verdict.className = 'badge ' + (result.status === 'yes' ? 'success' : 'danger');
+        verdict.textContent = result.status === 'yes' ? 'YES | نعم' : 'NO | لا';
+        card.appendChild(verdict);
+        const issuer = document.createElement('p');
+        issuer.innerHTML = `<strong>${result.issuer}</strong>`;
+        card.appendChild(issuer);
+        const detailList = document.createElement('div');
+        detailList.className = 'status-meta';
+        const formatter = new Intl.DateTimeFormat(html.lang === 'ar' ? 'ar-SA' : 'en-GB', {
+          dateStyle: 'medium',
+          timeStyle: 'short'
+        });
+        detailList.innerHTML = `
+          <span data-lang="ar">وقت التحقق: ${formatter.format(new Date())}</span>
+          <span data-lang="en">Verified at: ${formatter.format(new Date())}</span>
+          <span data-lang="ar">نافذة الصلاحية: ${formatter.format(new Date(result.valid_from))} → ${formatter.format(new Date(result.valid_to))}</span>
+          <span data-lang="en">Validity window: ${formatter.format(new Date(result.valid_from))} → ${formatter.format(new Date(result.valid_to))}</span>
+          <span data-lang="ar">حالة الإلغاء: ${result.revocation_status === 'active' ? 'نشط' : 'ملغي'}</span>
+          <span data-lang="en">Revocation status: ${result.revocation_status === 'active' ? 'Active' : 'Revoked'}</span>
+        `;
+        card.appendChild(detailList);
+        verifyStatus.appendChild(card);
+      }
+
+      langToggle.addEventListener('click', () => {
+        toggleLanguage();
+        updateProofMeta();
+      });
+
+      themeToggle.addEventListener('click', toggleTheme);
+      themeToggleEn.addEventListener('click', toggleTheme);
+      contrastToggle.addEventListener('click', toggleContrast);
+      contrastToggleEn.addEventListener('click', toggleContrast);
+
+      startGenerate.addEventListener('click', () => {
+        showModal(nafathModal);
+      });
+
+      nafathModal.addEventListener('close', () => {
+        startGenerate.focus();
+      });
+
+      nafathModal.querySelector('[data-close]').addEventListener('click', () => closeModal(nafathModal));
+      nafathModal.querySelector('[data-next]').addEventListener('click', () => {
+        closeModal(nafathModal);
+        showModal(pdplModal);
+      });
+
+      pdplModal.addEventListener('close', () => {
+        startGenerate.focus();
+      });
+
+      pdplModal.querySelector('[data-close]').addEventListener('click', () => closeModal(pdplModal));
+      pdplModal.querySelector('[data-consent]').addEventListener('click', () => {
+        closeModal(pdplModal);
+        proofSkeleton.hidden = false;
+        proofContent.hidden = true;
+        setTimeout(() => {
+          proofSkeleton.hidden = true;
+          proofContent.hidden = false;
+          proofData.valid_from = new Date().toISOString();
+          proofData.valid_to = new Date(Date.now() + 5 * 60 * 1000).toISOString();
+          proofData.code = 'BRH' + Math.random().toString(36).slice(2, 5).toUpperCase();
+          updateProofMeta();
+          startCountdown();
+          showToast();
+        }, 900);
+      });
+
+      verifyForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const clean = sanitize(codeInput.value);
+        codeInput.value = clean;
+        if (clean.length !== 6) {
+          codeInput.setCustomValidity(body.classList.contains('lang-en') ? 'Enter 6 characters' : 'أدخل ٦ أحرف');
+          codeInput.reportValidity();
+          return;
+        }
+        codeInput.setCustomValidity('');
+        verifyStatus.innerHTML = '<div class="skeleton" aria-hidden="true"></div>';
+        setTimeout(() => {
+          const isMatch = clean === proofData.code;
+          const result = {
+            status: isMatch ? proofData.status : 'no',
+            issuer: proofData.issuer,
+            valid_from: proofData.valid_from,
+            valid_to: proofData.valid_to,
+            revocation_status: isMatch ? proofData.revocation_status : 'revoked'
+          };
+          renderVerification(result);
+        }, 600);
+      });
+
+      updateProofMeta();
+      startCountdown();
+
+      document.querySelectorAll('dialog').forEach((modal) => {
+        modal.addEventListener('cancel', (event) => {
+          event.preventDefault();
+          closeModal(modal);
+        });
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+          [nafathModal, pdplModal].forEach(closeModal);
+        }
+      });
+    })();
+  </script>
+  <footer>
+    <span data-lang="ar">© 2025 الهيئة الرقمية الحكومية — بُرهان.</span>
+    <span data-lang="en">© 2025 Digital Government Authority — Burhān.</span>
+    <ol>
+      <li><a href="https://www.moj.gov.sa/Documents/Regulations/PDPL-EN.pdf" target="_blank" rel="noopener">PDPL</a></li>
+      <li><a href="https://www.w3.org/TR/WCAG22/" target="_blank" rel="noopener">WCAG 2.2 AA</a></li>
+      <li><a href="https://www.w3.org/TR/vc-data-model-2.0/" target="_blank" rel="noopener">W3C Verifiable Credentials v2.0</a></li>
+    </ol>
+  </footer>
+</body>
+</html>
