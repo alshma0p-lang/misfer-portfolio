@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="نبض الشبكة - نظام ذكي يقلل فاقد المياه ويحسن كفاءة الطاقة عبر الذكاء الاصطناعي والمحاكاة الهيدروليكية">
+    <meta name="keywords" content="نبض الشبكة, فاقد المياه, الذكاء الاصطناعي, شبكات المياه, رؤية 2030, صافي الانبعاثات الصفرية">
+    <meta name="author" content="TwinTech Industrial Analytics">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://nabdalshabaka.com/">
+    <meta property="og:title" content="نبض الشبكة | Stop Guessing. Start Saving Water.">
+    <meta property="og:description" content="AI-powered water network management: Cut repair time from 72h to 12h, reduce NRW by 15-20%">
+    <meta property="og:image" content="https://nabdalshabaka.com/assets/og-image.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://nabdalshabaka.com/">
+    <meta property="twitter:title" content="نبض الشبكة | AI-Powered Water Loss Reduction">
+    <meta property="twitter:description" content="Transform water network operations with ROI-based leak prioritization">
+    <meta property="twitter:image" content="https://nabdalshabaka.com/assets/og-image.png">
+
+    <title>نبض الشبكة | Network Pulse - AI-Powered Water Loss Management</title>
+
+    <link rel="icon" type="image/x-icon" href="./assets/favicon.ico">
+    <link rel="manifest" href="./manifest.webmanifest">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link rel="stylesheet" href="./styles/tokens.css">
+    <link rel="stylesheet" href="./styles/main.css">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "نبض الشبكة (Network Pulse)",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "5000-8000",
+        "priceCurrency": "SAR",
+        "priceValidUntil": "2025-12-31"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "ratingCount": "12"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "TwinTech Industrial Analytics",
+        "url": "https://twintechanalytics.com"
+      }
+    }
+    </script>
+</head>
+<body>
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Navigation -->
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="container nav-container">
+            <div class="nav-brand">
+                <a href="#home" aria-label="نبض الشبكة Home">
+                    <img src="./assets/logo.svg" alt="نبض الشبكة Logo" class="logo" width="180" height="60">
+                </a>
+            </div>
+
+            <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" id="navToggle">
+                <span class="hamburger"></span>
+            </button>
+
+            <div class="nav-menu" id="navMenu">
+                <a href="#solution" class="nav-link">الحل</a>
+                <a href="#demo" class="nav-link">عرض تجريبي</a>
+                <a href="#pricing" class="nav-link">التسعير</a>
+                <a href="#about" class="nav-link">عن المشروع</a>
+                <a href="#contact" class="nav-link-cta">طلب تجربة تجريبية</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero" id="main-content">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    توقف عن التخمين.<br>
+                    ابدأ في توفير المياه.
+                </h1>
+                <p class="hero-subtitle">
+                    نبض الشبكة يستخدم الذكاء الاصطناعي لترتيب كل إصلاح تسرب حسب التوفير الفعلي—
+                    لذلك تقوم فرقك بإصلاح ما يهم أكثر، عندما يهم أكثر.
+                </p>
+                <div class="hero-cta-group">
+                    <button class="btn btn-primary" onclick="showDemoRequest()">
+                        طلب عرض تجريبي تجريبي
+                    </button>
+                    <button class="btn btn-secondary" onclick="scrollToSection('solution')">
+                        كيف يعمل
+                    </button>
+                </div>
+
+                <!-- Value Props -->
+                <div class="value-bullets">
+                    <div class="value-item">
+                        <span class="icon" aria-hidden="true">⚡</span>
+                        <span>تقليل وقت الاستجابة للإصلاح من 72 ساعة إلى 12 ساعة</span>
+                    </div>
+                    <div class="value-item">
+                        <span class="icon" aria-hidden="true">🎯</span>
+                        <span>تقليل الإنذارات الكاذبة بنسبة 67٪</span>
+                    </div>
+                    <div class="value-item">
+                        <span class="icon" aria-hidden="true">💧</span>
+                        <span>تحقيق تخفيض 15-20٪ في فاقد المياه خلال 12 شهرًا</span>
+                    </div>
+                </div>
+
+                <p class="social-proof">
+                    تم نشره عبر 3 شركات مياه سعودية تدير أكثر من 2,400 كم من الشبكة.
+                    معترف به من قبل مركز الابتكار المائي السعودي في مياهثون 2025.
+                </p>
+            </div>
+
+            <div class="hero-visual">
+                <img src="./assets/hero-illustration.svg" alt="Network Pulse Dashboard Visualization" class="hero-image">
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator" aria-hidden="true">
+            <div class="scroll-arrow"></div>
+        </div>
+    </header>
+
+    <!-- Problem Statement Section -->
+    <section class="section section-problem" id="problem">
+        <div class="container">
+            <h2 class="section-title">المشكلة</h2>
+            <div class="problem-grid">
+                <div class="problem-card">
+                    <div class="problem-stat">25-35%</div>
+                    <p>فاقد المياه من الإنتاج الإجمالي</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-stat">4.5 kWh</div>
+                    <p>طاقة التحلية المهدرة لكل متر مكعب مفقود</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-stat">48-72 ساعة</div>
+                    <p>متوسط ​​وقت الإصلاح من التنبيه إلى الحل</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-stat">60%</div>
+                    <p>معدل الإنذارات الكاذبة في الأنظمة التقليدية</p>
+                </div>
+            </div>
+
+            <div class="problem-narrative">
+                <p>
+                    تفقد مرافق المياه السعودية كميات هائلة من المياه المحلاة—المنتجة بتكلفة وطاقة مرتفعة—
+                    بسبب تسربات الشبكة وأخطاء القياس. الأنظمة الحالية تكتشف التسربات ولكنها لا تستطيع الإجابة على:
+                    "أي إصلاح يوفر أكبر قدر من المياه لكل ساعة عمل للفريق؟"
+                </p>
+                <p>
+                    النتيجة: تقوم الفرق بإصلاح أقرب تسرب وليس الأكثر أهمية، مما يؤدي إلى هدر الوقت والطاقة والموارد.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="section section-solution" id="solution">
+        <div class="container">
+            <h2 class="section-title">الحل: نبض الشبكة</h2>
+            <p class="section-intro">
+                نظام قرار ذكي يحول إدارة شبكات المياه من تفاعلية إلى تنبؤية
+            </p>
+
+            <div class="solution-flow">
+                <div class="flow-step">
+                    <div class="step-number">1</div>
+                    <h3>الكشف متعدد الحواس</h3>
+                    <p>دمج بيانات الضغط والتدفق والصوتية في الوقت الفعلي مع التعلم الآلي—حساسية 92٪</p>
+                </div>
+                <div class="flow-arrow" aria-hidden="true">→</div>
+
+                <div class="flow-step">
+                    <div class="step-number">2</div>
+                    <h3>محاكاة التأثير</h3>
+                    <p>تشغيل محاكاة هيدروليكية "افتراض الإصلاح" لحساب توفير المياه/الطاقة/التكلفة</p>
+                </div>
+                <div class="flow-arrow" aria-hidden="true">→</div>
+
+                <div class="flow-step">
+                    <div class="step-number">3</div>
+                    <h3>تحسين القيود</h3>
+                    <p>ترتيب الإصلاحات حسب العائد/الساعة مع مراعاة الصمامات والفرق والميزانية</p>
+                </div>
+                <div class="flow-arrow" aria-hidden="true">→</div>
+
+                <div class="flow-step">
+                    <div class="step-number">4</div>
+                    <h3>التحقق والتعلم</h3>
+                    <p>التحقق التلقائي بعد 7 أيام يحدث أوزان النموذج—التحسين المستمر</p>
+                </div>
+            </div>
+
+            <!-- Key Features -->
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon" aria-hidden="true">🎯</div>
+                    <h3>ترتيب الأولويات على أساس العائد على الاستثمار</h3>
+                    <p>كل تنبيه يحصل على درجة عائد على الاستثمار: م³/الساعة محفوظة. لا مزيد من التخمين.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon" aria-hidden="true">🔍</div>
+                    <h3>إحداثيات GPS الدقيقة</h3>
+                    <p>ضيق موقع التسرب إلى 15 مترًا. قلل وقت البحث من ساعات إلى دقائق.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon" aria-hidden="true">⚙️</div>
+                    <h3>الوعي بالقيود</h3>
+                    <p>تحقق من عزل الصمامات وتوافر الطاقم والميزانية قبل إنشاء أمر العمل.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon" aria-hidden="true">✓</div>
+                    <h3>حلقة التحقق</h3>
+                    <p>يقارن التوفير الفعلي مقابل المتوقع. دقة 85-95٪. يتحسن النموذج بمرور الوقت.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon" aria-hidden="true">🔌</div>
+                    <h3>التكامل الأصلي</h3>
+                    <p>واجهات برمجة التطبيقات RESTful لـ SCADA وGIS وOMS. يتناسب مع سير العمل الحالي.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon" aria-hidden="true">📊</div>
+                    <h3>الامتثال التنظيمي</h3>
+                    <p>سجلات التدقيق غير القابلة للتغيير. إعداد التقارير الشفافة لهيئة المياه السعودية.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Preview Section -->
+    <section class="section section-demo" id="demo">
+        <div class="container">
+            <h2 class="section-title">شاهد نبض الشبكة في العمل</h2>
+
+            <div class="demo-interface">
+                <div class="demo-screen">
+                    <div class="screen-header">
+                        <div class="screen-tabs">
+                            <button class="tab tab-active" data-tab="alerts">التنبيهات النشطة (23)</button>
+                            <button class="tab" data-tab="simulation">المحاكاة</button>
+                            <button class="tab" data-tab="queue">قائمة انتظار الإصلاح</button>
+                        </div>
+                    </div>
+
+                    <div class="screen-content" id="alertsTab">
+                        <table class="alerts-table">
+                            <thead>
+                                <tr>
+                                    <th>الأولوية</th>
+                                    <th>الموقع</th>
+                                    <th>التوفير المقدر</th>
+                                    <th>الثقة</th>
+                                    <th>العائد/الساعة</th>
+                                    <th>الحالة</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="alert-critical">
+                                    <td><span class="badge badge-critical">1</span></td>
+                                    <td>الحي 4-B، جدة</td>
+                                    <td>180 م³/يوم<br>810 kWh/يوم</td>
+                                    <td>92%</td>
+                                    <td>7.5 م³/ساعة</td>
+                                    <td><button class="btn-simulate">محاكاة</button></td>
+                                </tr>
+                                <tr class="alert-high">
+                                    <td><span class="badge badge-high">2</span></td>
+                                    <td>الحي 2-A، الخبر</td>
+                                    <td>145 م³/يوم<br>653 kWh/يوم</td>
+                                    <td>88%</td>
+                                    <td>6.1 م³/ساعة</td>
+                                    <td><button class="btn-simulate">محاكاة</button></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="badge badge-medium">3</span></td>
+                                    <td>الحي 7-C، الرياض</td>
+                                    <td>98 م³/يوم<br>441 kWh/يوم</td>
+                                    <td>76%</td>
+                                    <td>4.1 م³/ساعة</td>
+                                    <td><button class="btn-simulate">محاكاة</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="demo-explanation">
+                    <h3>ماذا ترى</h3>
+                    <ol>
+                        <li><strong>الترتيب التلقائي:</strong> يتم ترتيب الإنذارات حسب أعلى عائد على الاستثمار (م³ محفوظة/ساعة عمل الطاقم)، وليس فقط حسب الخطورة أو الوقت.</li>
+                        <li><strong>درجة الثقة:</strong> يجمع النظام بين مصادر بيانات متعددة (ضغط، تدفق، صوتي) لحساب الثقة—يقلل من الإنذارات الكاذبة.</li>
+                        <li><strong>التأثير المحسوب:</strong> قبل إرسال الطاقم، تحسب المحاكاة المياه المحتملة والطاقة والتوفير في التكلفة.</li>
+                        <li><strong>عمل قابل للتنفيذ:</strong> انقر فوق "محاكاة" لرؤية تحليل القيود (عزل الصمام، توافر الطاقم، الميزانية) ونافذة الوقت الأمثل.</li>
+                    </ol>
+                    <button class="btn btn-primary" onclick="showDemoRequest()">
+                        طلب عرض تجريبي كامل
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="section section-pricing" id="pricing">
+        <div class="container">
+            <h2 class="section-title">التسعير</h2>
+            <p class="section-intro">نماذج مرنة لتتناسب مع احتياجات مرفق المياه الخاص بك</p>
+
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>الاشتراك الأساسي</h3>
+                    <div class="price">5,000-8,000 ريال/شهر</div>
+                    <p class="price-note">لكل منطقة قياس محددة (DMA)</p>
+                    <ul class="pricing-features">
+                        <li>✓ الكشف عن التسرب في الوقت الفعلي</li>
+                        <li>✓ محاكاة التأثير</li>
+                        <li>✓ ترتيب الأولويات على أساس عائد الاستثمار</li>
+                        <li>✓ تكامل SCADA/GIS</li>
+                        <li>✓ لوحة معلومات مشغل الويب</li>
+                        <li>✓ التحقق بعد الإصلاح</li>
+                        <li>✓ دعم البريد الإلكتروني</li>
+                    </ul>
+                    <button class="btn btn-outline">اتصل بالمبيعات</button>
+                </div>
+
+                <div class="pricing-card pricing-card-featured">
+                    <div class="featured-badge">الأكثر شعبية</div>
+                    <h3>رسوم النجاح</h3>
+                    <div class="price">20-30%</div>
+                    <p class="price-note">من التوفير المحقق (24 شهرًا)</p>
+                    <ul class="pricing-features">
+                        <li>✓ جميع ميزات الاشتراك الأساسي</li>
+                        <li>✓ لا توجد رسوم شهرية—الدفع فقط للنتائج</li>
+                        <li>✓ التحقق الشهري من المدخرات</li>
+                        <li>✓ نموذج SLA مضمون</li>
+                        <li>✓ مدير نجاح مخصص</li>
+                        <li>✓ تقارير تنظيمية ربع سنوية</li>
+                        <li>✓ دعم الهاتف ذو الأولوية</li>
+                    </ul>
+                    <button class="btn btn-primary">ابدأ البرنامج التجريبي</button>
+                </div>
+
+                <div class="pricing-card">
+                    <h3>المؤسسة</h3>
+                    <div class="price">مخصص</div>
+                    <p class="price-note">للمرافق متعددة المدن</p>
+                    <ul class="pricing-features">
+                        <li>✓ جميع ميزات رسوم النجاح</li>
+                        <li>✓ تطبيق الهاتف المحمول للفرق الميدانية</li>
+                        <li>✓ تكامل الروبوتات/الطائرات بدون طيار</li>
+                        <li>✓ الصيانة التنبؤية (الصمامات، المضخات)</li>
+                        <li>✓ لوحة معلومات المقارنة متعددة المرافق</li>
+                        <li>✓ نماذج ML مخصصة</li>
+                        <li>✓ فريق دعم مخصص</li>
+                    </ul>
+                    <button class="btn btn-outline">اتصل بالمبيعات</button>
+                </div>
+            </div>
+
+            <div class="pricing-footnote">
+                <p><strong>رسوم الإعداد لمرة واحدة:</strong> 15,000-25,000 ريال لتكامل النظام ومعايرة النموذج الهيدروليكي (4-8 أسابيع)</p>
+                <p><strong>البرامج التجريبية:</strong> 3-6 أشهر بخصم 50٪. لا يوجد التزام طويل الأجل.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About/Team Section -->
+    <section class="section section-about" id="about">
+        <div class="container">
+            <h2 class="section-title">عن المشروع</h2>
+
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        نبض الشبكة هو حل TwinTech Industrial Analytics، الرائد السعودي في التحليلات الصناعية القائمة على الذكاء الاصطناعي.
+                        مع أكثر من 15 عامًا من الخبرة في خدمة أرامكو وسابك والمرافق الصناعية الكبرى، نحن نطبق الآن خبرتنا في
+                        الصيانة التنبؤية على التحدي الحاسم المتمثل في فقدان المياه.
+                    </p>
+                    <p>
+                        تم تطوير النظام بالشراكة مع مركز الابتكار المائي السعودي ومعترف به في مياهثون 2025—
+                        مسابقة الابتكار الرائدة في المملكة للحلول المائية.
+                    </p>
+                    <p>
+                        <strong>مهمتنا:</strong> دعم رؤية السعودية 2030 وأهداف صافي الانبعاثات الصفرية 2060 من خلال
+                        تقليل فاقد المياه والطاقة واستخدام الموارد بكفاءة عبر قطاع المياه.
+                    </p>
+                </div>
+
+                <div class="team-grid">
+                    <div class="team-card">
+                        <h3>مسفر الشمراني</h3>
+                        <p class="team-role">المؤسس والرئيس التنفيذي</p>
+                        <p>15+ عامًا في ARAMCO/SABIC. خبير في التحليلات الصناعية والتوائم الرقمية التكيفية.</p>
+                    </div>
+                    <div class="team-card">
+                        <h3>غلا الغامدي</h3>
+                        <p class="team-role">قائدة البيانات والنمذجة</p>
+                        <p>متخصصة في الذكاء الاصطناعي مع خبرة في تعلم الآلة الجغرافي وتحسين الشبكات.</p>
+                    </div>
+                    <div class="team-card">
+                        <h3>سهل يسين</h3>
+                        <p class="team-role">عضو الفريق</p>
+                        <p>خبير في تكامل أنظمة SCADA وOMS وتحليل بيانات الوقت الفعلي.</p>
+                    </div>
+                    <div class="team-card">
+                        <h3>محمد العوائش</h3>
+                        <p class="team-role">عضو الفريق</p>
+                        <p>أخصائي تطوير البرمجيات في منصة ناجز بوزارة العدل.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recognitions -->
+            <div class="recognitions">
+                <h3>التقدير والشراكات</h3>
+                <div class="recognition-logos">
+                    <div class="recognition-item">مياهثون 2025</div>
+                    <div class="recognition-item">مركز الابتكار المائي السعودي</div>
+                    <div class="recognition-item">رؤية 2030</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact/CTA Section -->
+    <section class="section section-contact" id="contact">
+        <div class="container">
+            <div class="contact-hero">
+                <h2>هل أنت مستعد لتحويل عمليات المياه الخاصة بك؟</h2>
+                <p>انضم إلى المرافق الرائدة في المملكة العربية السعودية التي تقلل من NRW بنسبة 15-20٪ مع نبض الشبكة</p>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-form-container">
+                    <h3>طلب برنامج تجريبي</h3>
+                    <form class="contact-form" id="pilotRequestForm" onsubmit="handleFormSubmit(event)">
+                        <div class="form-group">
+                            <label for="name">الاسم الكامل *</label>
+                            <input type="text" id="name" name="name" required aria-required="true">
+                        </div>
+                        <div class="form-group">
+                            <label for="organization">المنظمة *</label>
+                            <input type="text" id="organization" name="organization" required aria-required="true">
+                        </div>
+                        <div class="form-group">
+                            <label for="role">الدور/المسمى الوظيفي *</label>
+                            <input type="text" id="role" name="role" required aria-required="true">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">البريد الإلكتروني *</label>
+                            <input type="email" id="email" name="email" required aria-required="true">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">رقم الهاتف *</label>
+                            <input type="tel" id="phone" name="phone" required aria-required="true" pattern="[0-9+\-\s()]+">
+                        </div>
+                        <div class="form-group">
+                            <label for="networkSize">حجم الشبكة التقريبي (كم)</label>
+                            <input type="number" id="networkSize" name="networkSize" min="0" step="10">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">احتياجات/أسئلة إضافية</label>
+                            <textarea id="message" name="message" rows="4"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">إرسال الطلب</button>
+                    </form>
+                    <div id="formSuccess" class="form-message form-success" style="display:none;">
+                        ✓ شكرًا! سنتواصل معك في غضون 24 ساعة.
+                    </div>
+                </div>
+
+                <div class="contact-info">
+                    <h3>معلومات الاتصال</h3>
+                    <div class="contact-detail">
+                        <strong>البريد الإلكتروني:</strong><br>
+                        <a href="mailto:Alshmrani.misfer.a@gmail.com">Alshmrani.misfer.a@gmail.com</a>
+                    </div>
+                    <div class="contact-detail">
+                        <strong>الهاتف:</strong><br>
+                        <a href="tel:+966505944436">+966 50 594 4436</a>
+                    </div>
+                    <div class="contact-detail">
+                        <strong>الموقع:</strong><br>
+                        الجبيل، المملكة العربية السعودية
+                    </div>
+                    <div class="contact-detail">
+                        <strong>ساعات العمل:</strong><br>
+                        الأحد-الخميس: 8:00-17:00 بتوقيت السعودية
+                    </div>
+
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="LinkedIn">LinkedIn</a>
+                        <a href="#" class="social-link" aria-label="Twitter">Twitter</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <img src="./assets/logo.svg" alt="نبض الشبكة" class="footer-logo" width="150" height="50">
+                    <p>تحويل إدارة شبكات المياه بالذكاء الاصطناعي</p>
+                </div>
+                <div class="footer-column">
+                    <h4>روابط سريعة</h4>
+                    <ul class="footer-links">
+                        <li><a href="#solution">الحل</a></li>
+                        <li><a href="#demo">عرض تجريبي</a></li>
+                        <li><a href="#pricing">التسعير</a></li>
+                        <li><a href="#about">عن المشروع</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>الموارد</h4>
+                    <ul class="footer-links">
+                        <li><a href="./pages/privacy.html">سياسة الخصوصية</a></li>
+                        <li><a href="./pages/terms.html">شروط الخدمة</a></li>
+                        <li><a href="./ACCESSIBILITY.md">إمكانية الوصول</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>اتصل بنا</h4>
+                    <p>Alshmrani.misfer.a@gmail.com<br>+966 50 594 4436</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 TwinTech Industrial Analytics. جميع الحقوق محفوظة.</p>
+                <p>دعم رؤية السعودية 2030 وصافي الانبعاثات الصفرية 2060</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="./scripts/router.js"></script>
+    <script src="./scripts/ui.js"></script>
+    <script src="./scripts/analytics.js"></script>
+    <script src="./scripts/mock-api.js"></script>
+
+    <script>
+        // Initialize app
+        document.addEventListener('DOMContentLoaded', function() {
+            initNavigation();
+            initScrollEffects();
+            initFormValidation();
+        });
+    </script>
+</body>
+</html>

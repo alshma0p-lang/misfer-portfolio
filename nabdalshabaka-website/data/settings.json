@@ -1,0 +1,29 @@
+{
+  "site": {
+    "name": "نبض الشبكة",
+    "nameEn": "Network Pulse",
+    "tagline": "AI-Powered Water Loss Management",
+    "url": "https://nabdalshabaka.com",
+    "language": "ar",
+    "direction": "rtl"
+  },
+  "contact": {
+    "email": "Alshmrani.misfer.a@gmail.com",
+    "phone": "+966 50 594 4436",
+    "address": "Jubail, Saudi Arabia",
+    "hours": "Sunday-Thursday: 8:00-17:00 AST"
+  },
+  "social": {
+    "linkedin": "https://linkedin.com/company/twintech-analytics",
+    "twitter": "https://twitter.com/nabdalshabaka"
+  },
+  "analytics": {
+    "googleAnalyticsId": "G-XXXXXXXXXX",
+    "mixpanelToken": "your-mixpanel-token"
+  },
+  "features": {
+    "enableDemoMode": true,
+    "enableAnalytics": false,
+    "enableLiveChat": false
+  }
+}
