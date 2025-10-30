@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 80" fill="none">
+  <!-- Water droplet outline -->
+  <path d="M50 20 C50 20, 30 40, 30 55 C30 67, 38.95 75, 50 75 C61.05 75, 70 67, 70 55 C70 40, 50 20, 50 20 Z"
+        fill="#00A3E0" fill-opacity="0.1" stroke="#002A4E" stroke-width="2"/>
+
+  <!-- IoT network nodes inside droplet -->
+  <circle cx="50" cy="50" r="3" fill="#002A4E"/>
+  <circle cx="42" cy="42" r="2.5" fill="#00A3E0"/>
+  <circle cx="58" cy="42" r="2.5" fill="#00A3E0"/>
+  <circle cx="42" cy="58" r="2.5" fill="#00A3E0"/>
+  <circle cx="58" cy="58" r="2.5" fill="#00A3E0"/>
+  <circle cx="50" cy="35" r="2" fill="#00D9B8"/>
+  <circle cx="50" cy="65" r="2" fill="#00D9B8"/>
+
+  <!-- Connection lines -->
+  <line x1="50" y1="50" x2="42" y2="42" stroke="#00A3E0" stroke-width="1.5" opacity="0.6"/>
+  <line x1="50" y1="50" x2="58" y2="42" stroke="#00A3E0" stroke-width="1.5" opacity="0.6"/>
+  <line x1="50" y1="50" x2="42" y2="58" stroke="#00A3E0" stroke-width="1.5" opacity="0.6"/>
+  <line x1="50" y1="50" x2="58" y2="58" stroke="#00A3E0" stroke-width="1.5" opacity="0.6"/>
+  <line x1="50" y1="50" x2="50" y2="35" stroke="#00D9B8" stroke-width="1.5" opacity="0.6"/>
+  <line x1="50" y1="50" x2="50" y2="65" stroke="#00D9B8" stroke-width="1.5" opacity="0.6"/>
+
+  <!-- Arabic text: نبض الشبكة -->
+  <text x="90" y="35" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#002A4E">نبض الشبكة</text>
+
+  <!-- English text: Network Pulse -->
+  <text x="90" y="55" font-family="Arial, sans-serif" font-size="12" fill="#00A3E0">Network Pulse</text>
+
+  <!-- Tagline -->
+  <text x="90" y="70" font-family="Arial, sans-serif" font-size="9" fill="#6B7280">AI-Powered Water Loss Management</text>
+</svg>

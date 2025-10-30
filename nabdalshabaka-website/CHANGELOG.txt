@@ -1,0 +1,39 @@
+نبض الشبكة - CHANGELOG
+========================
+
+v0.1.0 - 2024-10-30
+-------------------
+Initial prototype release for MiyahThon 2025
+
+Features:
+- Complete landing page with hero section
+- Problem statement and solution overview
+- Interactive demo interface showing alert prioritization
+- Pricing page with three tiers (Basic, Success Fee, Enterprise)
+- Team profiles and project background
+- Contact form for pilot program requests
+- Bilingual content (Arabic/English)
+- Fully responsive design
+- WCAG 2.2 AA accessibility compliance
+- SEO optimization with structured data
+
+Technical:
+- Pure HTML/CSS/JavaScript (no build step)
+- RTL support for Arabic
+- Mock API for demo functionality
+- Analytics event tracking framework
+- Form validation
+
+Known Issues:
+- Demo interface simulation is static (no live backend)
+- Mobile navigation menu needs touch event optimization
+- Some Arabic font weights may not render consistently across browsers
+
+Next Release (v0.2.0 - Planned Q1 2025):
+- Live backend API integration
+- Real-time dashboard with WebSocket updates
+- Mobile app download links
+- Customer testimonials section
+- Case study pages
+- Blog/news section
+- Multi-language support expansion

@@ -1,0 +1,36 @@
+{
+  "alerts": [
+    {
+      "id": "INC-2024-10-30-0847",
+      "timestamp": "2024-10-30T04:47:23Z",
+      "location": {
+        "district": "District 4-B",
+        "city": "Jeddah",
+        "dmaId": "DMA-JED-04B",
+        "coordinates": {
+          "lat": 21.543312,
+          "lng": 39.172845
+        }
+      },
+      "detection": {
+        "method": "multi-sensor-fusion",
+        "confidence": 0.92,
+        "sources": ["pressure", "flow", "acoustic"]
+      },
+      "impact": {
+        "estimatedLeakRate": 180.5,
+        "energyWaste": 810.2,
+        "costPerDay": 2340.15,
+        "roiPerHour": 7.52
+      },
+      "priority": 1,
+      "status": "pending"
+    }
+  ],
+  "statistics": {
+    "totalActiveAlerts": 23,
+    "avgResponseTime": "12 hours",
+    "nrwReduction": "18%",
+    "energySavings": "1.8M kWh/year"
+  }
+}

@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://nabdalshabaka.com/sitemap.xml
+
+# Disallow admin areas (if they exist)
+Disallow: /admin/
+Disallow: /api/
