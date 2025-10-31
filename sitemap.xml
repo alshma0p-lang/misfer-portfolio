@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- Arabic Pages -->
+  <url>
+    <loc>https://telechic.com/ar/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://telechic.com/ar/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://telechic.com/en/" />
+    <lastmod>2025-10-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://telechic.com/ar/features.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://telechic.com/ar/features.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://telechic.com/en/features.html" />
+    <lastmod>2025-10-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://telechic.com/ar/technology.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://telechic.com/ar/technology.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://telechic.com/en/technology.html" />
+    <lastmod>2025-10-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://telechic.com/ar/design-system.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://telechic.com/ar/design-system.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://telechic.com/en/design-system.html" />
+    <lastmod>2025-10-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://telechic.com/ar/resources.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://telechic.com/ar/resources.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://telechic.com/en/resources.html" />
+    <lastmod>2025-10-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://telechic.com/ar/contact.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://telechic.com/ar/contact.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://telechic.com/en/contact.html" />
+    <lastmod>2025-10-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://telechic.com/ar/privacy.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://telechic.com/ar/privacy.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://telechic.com/en/privacy.html" />
+    <lastmod>2025-10-31</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+
+  <url>
+    <loc>https://telechic.com/ar/terms.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://telechic.com/ar/terms.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://telechic.com/en/terms.html" />
+    <lastmod>2025-10-31</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+
+  <!-- English Pages -->
+  <url>
+    <loc>https://telechic.com/en/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://telechic.com/en/" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://telechic.com/ar/" />
+    <lastmod>2025-10-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://telechic.com/en/features.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://telechic.com/en/features.html" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://telechic.com/ar/features.html" />
+    <lastmod>2025-10-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://telechic.com/en/contact.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://telechic.com/en/contact.html" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://telechic.com/ar/contact.html" />
+    <lastmod>2025-10-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+</urlset>
