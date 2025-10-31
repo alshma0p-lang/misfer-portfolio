@@ -1,0 +1,318 @@
+/* /assets/css/base.css */
+/* Base styles, CSS reset, and design tokens for TeleChic marketing site */
+
+/* ============================================
+   CSS CUSTOM PROPERTIES (Design Tokens)
+   ============================================ */
+:root {
+  /* Brand Colors - Light Mode */
+  --brand-green-700: #085845;
+  --brand-green-600: #095A48;
+  --brand-green-500: #0A6A56;
+  --brand-green-400: #2D8874;
+  --brand-green-300: #50A692;
+  --brand-green-200: #A8D4C9;
+  --brand-green-100: #D4EAE4;
+  --brand-green-50: #E9F5F2;
+
+  --brand-red-700: #8A2309;
+  --brand-red-600: #962510;
+  --brand-red-500: #A82B11;
+  --brand-red-400: #C45540;
+  --brand-red-300: #D07E6E;
+  --brand-red-200: #E5BFB7;
+  --brand-red-100: #F2DFDB;
+  --brand-red-50: #F9EFED;
+
+  --sand-50: #FAF9F7;
+  --sand-100: #F0EDE9;
+  --sand-200: #E7E3DE;
+  --sand-300: #D1CAC1;
+  --sand-400: #BBB1A4;
+  --sand-500: #A59887;
+  --sand-600: #847A6C;
+
+  --ink: #131715;
+  --white: #FFFFFF;
+
+  /* Semantic Colors - Light Mode */
+  --color-primary: var(--brand-green-500);
+  --color-primary-hover: var(--brand-green-600);
+  --color-primary-pressed: var(--brand-green-700);
+  --color-accent: var(--brand-red-500);
+  --color-accent-hover: var(--brand-red-600);
+
+  --color-bg: var(--white);
+  --color-surface: var(--sand-50);
+  --color-border: var(--sand-200);
+  --color-text: var(--ink);
+  --color-text-secondary: var(--sand-600);
+  --color-text-on-primary: var(--white);
+
+  /* Focus */
+  --color-focus: var(--brand-green-200);
+
+  /* Typography */
+  --font-display: 'Playfair Display', 'Noto Naskh Arabic', serif;
+  --font-sans: 'Inter', 'Noto Sans Arabic', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-mono: 'SF Mono', 'Consolas', monospace;
+
+  --font-size-xs: 0.75rem;    /* 12px */
+  --font-size-sm: 0.875rem;   /* 14px */
+  --font-size-base: 1rem;     /* 16px */
+  --font-size-lg: 1.125rem;   /* 18px */
+  --font-size-xl: 1.25rem;    /* 20px */
+  --font-size-2xl: 1.5rem;    /* 24px */
+  --font-size-3xl: 1.875rem;  /* 30px */
+  --font-size-4xl: 2.25rem;   /* 36px */
+  --font-size-5xl: 3rem;      /* 48px */
+
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+
+  /* Spacing */
+  --space-1: 0.25rem;   /* 4px */
+  --space-2: 0.5rem;    /* 8px */
+  --space-3: 0.75rem;   /* 12px */
+  --space-4: 1rem;      /* 16px */
+  --space-5: 1.25rem;   /* 20px */
+  --space-6: 1.5rem;    /* 24px */
+  --space-8: 2rem;      /* 32px */
+  --space-10: 2.5rem;   /* 40px */
+  --space-12: 3rem;     /* 48px */
+  --space-16: 4rem;     /* 64px */
+  --space-20: 5rem;     /* 80px */
+  --space-24: 6rem;     /* 96px */
+
+  /* Radii */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+  /* Transitions */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Layout */
+  --container-max: 1280px;
+  --container-padding: var(--space-4);
+  --header-height: 4rem;
+}
+
+/* Dark Mode Override */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #0B0D0C;
+    --color-surface: #121514;
+    --color-border: #1C201E;
+    --color-text: var(--white);
+    --color-text-secondary: #A8B3AE;
+    --color-primary: #609E91;
+    --color-primary-hover: #50A692;
+    --color-accent: #C67564;
+    --color-accent-hover: #D07E6E;
+  }
+}
+
+/* ============================================
+   MODERN CSS RESET
+   ============================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  min-height: 100vh;
+  line-height: var(--line-height-normal);
+  font-family: var(--font-sans);
+  font-size: var(--font-size-base);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+
+/* Skip to main content link */
+.skip-link {
+  position: absolute;
+  top: var(--space-2);
+  left: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-primary);
+  color: var(--color-text-on-primary);
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  z-index: 9999;
+  transform: translateY(-150%);
+  transition: transform var(--transition-fast);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+/* Focus visible styles */
+:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* Remove focus outline for mouse users */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Screen reader only content */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  line-height: var(--line-height-tight);
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+h1 { font-size: var(--font-size-4xl); margin-block-end: var(--space-6); }
+h2 { font-size: var(--font-size-3xl); margin-block-end: var(--space-5); }
+h3 { font-size: var(--font-size-2xl); margin-block-end: var(--space-4); }
+h4 { font-size: var(--font-size-xl); margin-block-end: var(--space-3); }
+h5 { font-size: var(--font-size-lg); margin-block-end: var(--space-3); }
+h6 { font-size: var(--font-size-base); margin-block-end: var(--space-2); }
+
+@media (min-width: 768px) {
+  h1 { font-size: var(--font-size-5xl); }
+  h2 { font-size: var(--font-size-4xl); }
+  h3 { font-size: var(--font-size-3xl); }
+}
+
+p {
+  margin-block-end: var(--space-4);
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--color-primary-hover);
+}
+
+strong, b {
+  font-weight: 600;
+}
+
+/* ============================================
+   LAYOUT UTILITIES
+   ============================================ */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+
+@media (min-width: 768px) {
+  .container {
+    --container-padding: var(--space-8);
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    --container-padding: var(--space-12);
+  }
+}
+
+/* Section spacing */
+section {
+  padding-block: var(--space-16);
+}
+
+@media (min-width: 768px) {
+  section {
+    padding-block: var(--space-24);
+  }
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ============================================
+   RTL SUPPORT
+   ============================================ */
+[dir="rtl"] {
+  text-align: start;
+}
+
+[dir="ltr"] {
+  text-align: start;
+}

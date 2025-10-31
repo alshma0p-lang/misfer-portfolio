@@ -1,0 +1,254 @@
+<!-- /ar/technology.html -->
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>التقنية - TeleChic | كيف نبني الجمال الذكي</title>
+  <meta name="description" content="تعرفي على التقنية خلف TeleChic: معمارية المحولات، الخصوصية المحلية، توافق PDPL، والمعالجة على الجهاز">
+
+  <link rel="canonical" href="https://telechic.com/ar/technology.html">
+  <link rel="alternate" hreflang="ar" href="https://telechic.com/ar/technology.html">
+  <link rel="alternate" hreflang="en" href="https://telechic.com/en/technology.html">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/icons/favicon-32x32.png">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <meta name="theme-color" content="#0A6A56">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;600;700&family=Noto+Naskh+Arabic:wght@400;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/assets/css/base.css">
+  <link rel="stylesheet" href="/assets/css/theme.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">تخطى إلى المحتوى الرئيسي</a>
+
+  <header class="site-header">
+    <div class="container header-container">
+      <a href="/ar/" class="site-logo" aria-label="TeleChic الصفحة الرئيسية">
+        <img src="/assets/img/logo.svg" alt="TeleChic" width="120" height="40">
+      </a>
+      <button class="menu-toggle" aria-expanded="false" aria-controls="primary-navigation" aria-label="فتح القائمة">
+        <svg class="menu-icon-open" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+        <svg class="menu-icon-close" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      <nav id="primary-navigation" class="primary-nav" data-visible="false" aria-label="التنقل الرئيسي">
+        <ul class="nav-list">
+          <li><a href="/ar/" class="nav-link">الرئيسية</a></li>
+          <li><a href="/ar/features.html" class="nav-link">الميزات</a></li>
+          <li><a href="/ar/technology.html" class="nav-link" aria-current="page">التقنية</a></li>
+          <li><a href="/ar/design-system.html" class="nav-link">نظام التصميم</a></li>
+          <li><a href="/ar/resources.html" class="nav-link">الموارد</a></li>
+          <li><a href="/ar/contact.html" class="nav-link">اتصل بنا</a></li>
+        </ul>
+        <div class="lang-switcher" role="navigation" aria-label="تبديل اللغة">
+          <a href="/ar/technology.html" class="lang-link" aria-current="true" lang="ar">العربية</a>
+          <a href="/en/technology.html" class="lang-link" lang="en">English</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="container text-center">
+        <h1>التقنية خلف TeleChic</h1>
+        <p>قوة، خصوصية، وأداء - مبني للمستقبل</p>
+      </div>
+    </section>
+
+    <!-- Architecture Overview -->
+    <section>
+      <div class="container">
+        <h2>معمارية المحولات</h2>
+        <p>نستخدم نمط المحول (Adapter Pattern) لفصل المنطق الأساسي عن تطبيقات SDK الخارجية، مما يضمن المرونة والقابلية للاختبار.</p>
+
+        <div class="features-grid">
+          <article class="feature-card">
+            <h3>BeautySdkAdapter</h3>
+            <p>المحول الإنتاجي الذي يتصل بمزودي SDK الحقيقيين لتحليل البشرة، AR، والتعرف على المكونات.</p>
+          </article>
+
+          <article class="feature-card">
+            <h3>MockBeautyAdapter</h3>
+            <p>محول تجريبي بصور وبيانات JSON محملة مسبقاً. يشغل وضع التجربة دون الحاجة لمفاتيح API.</p>
+          </article>
+
+          <article class="feature-card">
+            <h3>قابلية التبديل</h3>
+            <p>تبديل سهل بين المحولات الحقيقية والتجريبية عبر تبديل بسيط - مثالي للتطوير والعروض التوضيحية.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- Data & Privacy -->
+    <section class="bg-surface">
+      <div class="container">
+        <h2>الخصوصية والبيانات</h2>
+        <p>بياناتك تبقى معك. TeleChic مبني للخصوصية من الأساس.</p>
+
+        <div class="hero-content">
+          <div class="hero-text">
+            <h3>المحلية أولاً</h3>
+            <ul style="list-style-position: inside; color: var(--color-text-secondary); margin-bottom: var(--space-6);">
+              <li><strong>قاعدة بيانات محلية:</strong> جميع التحليلات والصور والتقدم محفوظة على جهازك</li>
+              <li><strong>لا توجد خوادم سحابية إلزامية:</strong> المزامنة اختيارية خلف علامة ميزة</li>
+              <li><strong>معالجة على الجهاز:</strong> تحليلات AR والبشرة تعمل محلياً حيثما أمكن</li>
+              <li><strong>تشفير شامل:</strong> إذا اخترت المزامنة، البيانات مشفرة أثناء النقل والتخزين</li>
+            </ul>
+
+            <h3>توافق PDPL (KSA)</h3>
+            <ul style="list-style-position: inside; color: var(--color-text-secondary); margin-bottom: var(--space-6);">
+              <li>موافقة صريحة لجميع النماذج وجمع البيانات</li>
+              <li>إفصاحات خصوصية واضحة باللغتين العربية والإنجليزية</li>
+              <li>ضوابط حقوق البيانات: تصدير، حذف، وسحب الموافقة</li>
+              <li>إشعار "غير طبي" في التذييل والمواد القابلة للتصدير</li>
+            </ul>
+          </div>
+
+          <div class="hero-image">
+            <img src="/assets/img/tech-privacy.jpg" alt="رسم توضيحي للخصوصية والأمان" width="600" height="450" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- Performance -->
+    <section>
+      <div class="container">
+        <h2>الأداء والسرعة</h2>
+        <p>مبني للسرعة، محسّن للبطارية والشبكة</p>
+
+        <div class="features-grid">
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">⚡</div>
+            <h3>إطلاق سريع</h3>
+            <p>من النقر إلى الجاهزية في أقل من 3 ثوانٍ</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">📸</div>
+            <h3>التقاط إلى نتيجة</h3>
+            <p>أقل من 1.5 ثانية من التقاط الصورة إلى عرض التقرير (تجريبي)</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">🎨</div>
+            <h3>60 إطار في الثانية</h3>
+            <p>تحريكات سلسة، انتقالات AR سريعة، ورسوم متحركة استجابية</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">🔋</div>
+            <h3>صديق للبطارية</h3>
+            <p>معالجة محسّنة على الجهاز تقلل من استنزاف البطارية</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">📶</div>
+            <h3>عمل دون اتصال</h3>
+            <p>الوظائف الأساسية تعمل حتى بدون اتصال بالإنترنت</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">♿</div>
+            <h3>إمكانية الوصول</h3>
+            <p>WCAG 2.2 AA: تباين الألوان، التنقل بلوحة المفاتيح، قارئات الشاشة</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- Tech Stack -->
+    <section class="bg-surface">
+      <div class="container">
+        <h2>المكدس التقني</h2>
+        <p class="text-muted">(للمطورين والشركاء التقنيين)</p>
+
+        <div class="hero-content">
+          <div class="hero-text">
+            <h3>التطبيق المحمول</h3>
+            <ul style="list-style-position: inside; color: var(--color-text-secondary); margin-bottom: var(--space-6);">
+              <li><strong>React Native + Expo:</strong> منصة متعددة (iOS/Android)</li>
+              <li><strong>TypeScript:</strong> أمان الأنواع والصيانة طويلة الأمد</li>
+              <li><strong>Skia/Rive:</strong> رسوم متحركة عالية الأداء (حلقة الثبات، تأثيرات AR)</li>
+              <li><strong>مزودو SDK:</strong> تكاملات تحليل البشرة، AR، والمكونات</li>
+            </ul>
+
+            <h3>هذا الموقع</h3>
+            <ul style="list-style-position: inside; color: var(--color-text-secondary); margin-bottom: var(--space-6);">
+              <li><strong>HTML5 دلالي:</strong> لا يوجد إطار عمل، أساس خفيف</li>
+              <li><strong>CSS Grid/Flexbox:</strong> تخطيط سريع الاستجابة يعطي الأولوية للهاتف</li>
+              <li><strong>خصائص CSS المنطقية:</strong> تكيف تلقائي RTL/LTR</li>
+              <li><strong>JS الفانيليا:</strong> حد أدنى من الاعتماديات، سريع التحميل</li>
+              <li><strong>PWA جاهز:</strong> Manifest، Service Worker، عمل دون اتصال</li>
+            </ul>
+          </div>
+
+          <div class="hero-image">
+            <img src="/assets/img/tech-stack.jpg" alt="رسم توضيحي للمكدس التقني" width="600" height="450" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="hero">
+      <div class="container text-center">
+        <h2>جاهزة لرؤية التقنية أثناء العمل؟</h2>
+        <p>حملي TeleChic واستكشفي وضع التجربة</p>
+        <div class="hero-actions" style="justify-content: center; margin-top: var(--space-6);">
+          <a href="#download" class="btn btn-primary btn-lg">حملي التطبيق</a>
+          <a href="/ar/features.html" class="btn btn-outline btn-lg">استكشفي الميزات</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-section">
+          <img src="/assets/img/logo.svg" alt="TeleChic" width="120" height="40" style="margin-bottom: var(--space-4);">
+          <p class="text-muted">تطبيق الجمال الذكي بالكاميرا</p>
+        </div>
+        <div class="footer-section">
+          <h3>المنتج</h3>
+          <ul class="footer-list">
+            <li><a href="/ar/features.html" class="footer-link">الميزات</a></li>
+            <li><a href="/ar/technology.html" class="footer-link">التقنية</a></li>
+            <li><a href="/ar/design-system.html" class="footer-link">نظام التصميم</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>الموارد</h3>
+          <ul class="footer-list">
+            <li><a href="/ar/resources.html" class="footer-link">المدونة</a></li>
+            <li><a href="/ar/contact.html" class="footer-link">اتصل بنا</a></li>
+            <li><a href="/ar/privacy.html" class="footer-link">سياسة الخصوصية</a></li>
+            <li><a href="/ar/terms.html" class="footer-link">الشروط والأحكام</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-legal">© 2025 TeleChic. جميع الحقوق محفوظة. | <strong>تنويه:</strong> TeleChic هو تطبيق تجميلي وليس طبياً.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/assets/js/app.js" defer></script>
+</body>
+</html>

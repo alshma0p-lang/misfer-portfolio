@@ -1,0 +1,280 @@
+<!-- /ar/contact.html -->
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>اتصل بنا - TeleChic</title>
+  <meta name="description" content="تواصلي مع فريق TeleChic. أسئلة، تعليقات، أو استفسارات شراكة - نحن هنا لمساعدتك">
+
+  <link rel="canonical" href="https://telechic.com/ar/contact.html">
+  <link rel="alternate" hreflang="ar" href="https://telechic.com/ar/contact.html">
+  <link rel="alternate" hreflang="en" href="https://telechic.com/en/contact.html">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/icons/favicon-32x32.png">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <meta name="theme-color" content="#0A6A56">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;600;700&family=Noto+Naskh+Arabic:wght@400;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/assets/css/base.css">
+  <link rel="stylesheet" href="/assets/css/theme.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">تخطى إلى المحتوى الرئيسي</a>
+
+  <header class="site-header">
+    <div class="container header-container">
+      <a href="/ar/" class="site-logo" aria-label="TeleChic الصفحة الرئيسية">
+        <img src="/assets/img/logo.svg" alt="TeleChic" width="120" height="40">
+      </a>
+      <button class="menu-toggle" aria-expanded="false" aria-controls="primary-navigation" aria-label="فتح القائمة">
+        <svg class="menu-icon-open" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+        <svg class="menu-icon-close" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      <nav id="primary-navigation" class="primary-nav" data-visible="false" aria-label="التنقل الرئيسي">
+        <ul class="nav-list">
+          <li><a href="/ar/" class="nav-link">الرئيسية</a></li>
+          <li><a href="/ar/features.html" class="nav-link">الميزات</a></li>
+          <li><a href="/ar/technology.html" class="nav-link">التقنية</a></li>
+          <li><a href="/ar/design-system.html" class="nav-link">نظام التصميم</a></li>
+          <li><a href="/ar/resources.html" class="nav-link">الموارد</a></li>
+          <li><a href="/ar/contact.html" class="nav-link" aria-current="page">اتصل بنا</a></li>
+        </ul>
+        <div class="lang-switcher" role="navigation" aria-label="تبديل اللغة">
+          <a href="/ar/contact.html" class="lang-link" aria-current="true" lang="ar">العربية</a>
+          <a href="/en/contact.html" class="lang-link" lang="en">English</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="container text-center">
+        <h1>تواصلي معنا</h1>
+        <p>لديك سؤال أو تعليق؟ نحن هنا لمساعدتك</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="hero-content">
+          <!-- Contact Form -->
+          <div style="max-width: 600px;">
+            <h2>أرسلي لنا رسالة</h2>
+
+            <!-- Success/Error Messages -->
+            <div id="form-messages" role="status" aria-live="polite"></div>
+
+            <form id="contact-form" novalidate>
+              <div class="form-group">
+                <label for="name" class="form-label">الاسم <span aria-label="مطلوب">*</span></label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  class="form-input"
+                  required
+                  aria-required="true"
+                  aria-describedby="name-error">
+                <span id="name-error" class="form-error" role="alert"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="email" class="form-label">البريد الإلكتروني <span aria-label="مطلوب">*</span></label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  class="form-input"
+                  required
+                  aria-required="true"
+                  aria-describedby="email-error">
+                <span id="email-error" class="form-error" role="alert"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="subject" class="form-label">الموضوع <span aria-label="مطلوب">*</span></label>
+                <select
+                  id="subject"
+                  name="subject"
+                  class="form-select"
+                  required
+                  aria-required="true"
+                  aria-describedby="subject-error">
+                  <option value="">اختاري موضوعاً</option>
+                  <option value="general">استفسار عام</option>
+                  <option value="support">دعم تقني</option>
+                  <option value="partnership">فرصة شراكة</option>
+                  <option value="feedback">تعليق أو اقتراح</option>
+                  <option value="press">استفسار صحفي</option>
+                </select>
+                <span id="subject-error" class="form-error" role="alert"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="message" class="form-label">الرسالة <span aria-label="مطلوب">*</span></label>
+                <textarea
+                  id="message"
+                  name="message"
+                  class="form-textarea"
+                  required
+                  aria-required="true"
+                  aria-describedby="message-error message-hint"></textarea>
+                <span id="message-hint" class="form-hint">الحد الأدنى 10 أحرف</span>
+                <span id="message-error" class="form-error" role="alert"></span>
+              </div>
+
+              <button type="submit" class="btn btn-primary">إرسال الرسالة</button>
+            </form>
+          </div>
+
+          <!-- Contact Info -->
+          <div>
+            <h2>معلومات الاتصال</h2>
+
+            <div style="display: flex; flex-direction: column; gap: var(--space-6);">
+              <div>
+                <h3>البريد الإلكتروني</h3>
+                <p><a href="mailto:hello@telechic.com">hello@telechic.com</a></p>
+              </div>
+
+              <div>
+                <h3>الدعم</h3>
+                <p><a href="mailto:support@telechic.com">support@telechic.com</a></p>
+              </div>
+
+              <div>
+                <h3>الشراكات</h3>
+                <p><a href="mailto:partners@telechic.com">partners@telechic.com</a></p>
+              </div>
+
+              <div>
+                <h3>وسائل التواصل الاجتماعي</h3>
+                <ul class="social-links">
+                  <li><a href="https://twitter.com/telechic" class="social-link" aria-label="تويتر" rel="noopener" target="_blank">
+                    <svg width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path></svg>
+                  </a></li>
+                  <li><a href="https://instagram.com/telechic" class="social-link" aria-label="إنستغرام" rel="noopener" target="_blank">
+                    <svg width="20" height="20" fill="currentColor" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"></rect></svg>
+                  </a></li>
+                  <li><a href="https://linkedin.com/company/telechic" class="social-link" aria-label="لينكد إن" rel="noopener" target="_blank">
+                    <svg width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path><circle cx="4" cy="4" r="2"></circle></svg>
+                  </a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="bg-surface">
+      <div class="container">
+        <h2 class="text-center">الأسئلة الشائعة</h2>
+        <p class="text-center text-muted">إجابات سريعة للأسئلة الشائعة</p>
+
+        <div class="accordion">
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false" aria-controls="faq1">
+              <span>هل TeleChic مجاني؟</span>
+              <svg class="accordion-icon" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="accordion-panel" id="faq1" data-visible="false">
+              <div class="accordion-content">
+                <p>نعم! TeleChic مجاني للتحميل والاستخدام مع جميع الميزات الأساسية. قد نقدم ميزات مميزة في المستقبل.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false" aria-controls="faq2">
+              <span>هل بياناتي آمنة؟</span>
+              <svg class="accordion-icon" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="accordion-panel" id="faq2" data-visible="false">
+              <div class="accordion-content">
+                <p>تماماً. جميع بياناتك مخزنة محلياً على جهازك افتراضياً. نحن متوافقون تماماً مع PDPL وتحافظ على خصوصيتك.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false" aria-controls="faq3">
+              <span>هل TeleChic تطبيق طبي؟</span>
+              <svg class="accordion-icon" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="accordion-panel" id="faq3" data-visible="false">
+              <div class="accordion-content">
+                <p>لا. TeleChic هو تطبيق تجميلي وليس طبياً. نحن لا نقدم تشخيصات أو نصائح طبية. للمخاوف الطبية، استشيري طبيب أمراض جلدية.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false" aria-controls="faq4">
+              <span>على أي أجهزة يعمل TeleChic؟</span>
+              <svg class="accordion-icon" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="accordion-panel" id="faq4" data-visible="false">
+              <div class="accordion-content">
+                <p>TeleChic متاح لكل من iOS (iPhone) و Android. يتطلب كاميرا واتصالاً بالإنترنت للتنزيل الأولي.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-section">
+          <img src="/assets/img/logo.svg" alt="TeleChic" width="120" height="40" style="margin-bottom: var(--space-4);">
+          <p class="text-muted">تطبيق الجمال الذكي بالكاميرا</p>
+        </div>
+        <div class="footer-section">
+          <h3>المنتج</h3>
+          <ul class="footer-list">
+            <li><a href="/ar/features.html" class="footer-link">الميزات</a></li>
+            <li><a href="/ar/technology.html" class="footer-link">التقنية</a></li>
+            <li><a href="/ar/design-system.html" class="footer-link">نظام التصميم</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>الموارد</h3>
+          <ul class="footer-list">
+            <li><a href="/ar/resources.html" class="footer-link">المدونة</a></li>
+            <li><a href="/ar/contact.html" class="footer-link">اتصل بنا</a></li>
+            <li><a href="/ar/privacy.html" class="footer-link">سياسة الخصوصية</a></li>
+            <li><a href="/ar/terms.html" class="footer-link">الشروط والأحكام</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-legal">© 2025 TeleChic. جميع الحقوق محفوظة. | <strong>تنويه:</strong> TeleChic هو تطبيق تجميلي وليس طبياً.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/assets/js/app.js" defer></script>
+  <script src="/assets/js/validate.js" defer></script>
+</body>
+</html>
