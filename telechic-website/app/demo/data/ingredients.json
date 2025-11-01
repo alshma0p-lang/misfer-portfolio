@@ -1,0 +1,40 @@
+{
+  "productName": "Sample Beauty Serum",
+  "barcode": "1234567890123",
+  "ingredients": [
+    {
+      "name": "Aqua (Water)",
+      "inci": "AQUA",
+      "riskLevel": "safe",
+      "description": "Base ingredient, hydrating"
+    },
+    {
+      "name": "Niacinamide",
+      "inci": "NIACINAMIDE",
+      "riskLevel": "safe",
+      "description": "Vitamin B3, brightening and pore-refining"
+    },
+    {
+      "name": "Hyaluronic Acid",
+      "inci": "SODIUM HYALURONATE",
+      "riskLevel": "safe",
+      "description": "Deep hydration and plumping"
+    },
+    {
+      "name": "Fragrance",
+      "inci": "PARFUM",
+      "riskLevel": "caution",
+      "description": "May cause irritation in sensitive skin"
+    },
+    {
+      "name": "Methylisothiazolinone",
+      "inci": "METHYLISOTHIAZOLINONE",
+      "riskLevel": "avoid",
+      "description": "Common allergen, preservative"
+    }
+  ],
+  "overallRisk": "caution",
+  "safeCount": 3,
+  "cautionCount": 1,
+  "avoidCount": 1
+}

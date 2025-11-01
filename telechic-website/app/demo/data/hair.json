@@ -1,0 +1,24 @@
+{
+  "analysis": {
+    "frizz": {
+      "value": 65,
+      "rating": "fair",
+      "description": "Moderate frizz level"
+    },
+    "shine": {
+      "value": 82,
+      "rating": "good",
+      "description": "Good shine and luster"
+    },
+    "volume": {
+      "value": 75,
+      "rating": "good",
+      "description": "Healthy volume"
+    }
+  },
+  "recommendations": [
+    "Use smoothing serum to reduce frizz",
+    "Apply leave-in conditioner for added shine",
+    "Avoid heat styling without protection"
+  ]
+}

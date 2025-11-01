@@ -1,0 +1,249 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Arabic font - Reem Kufi for headings, Noto Sans Arabic for body */
+@import url('https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@300;400;500;600;700&display=swap');
+
+/* English fonts - Playfair Display for headings, Inter for body */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    /* Light theme colors */
+    --color-background: #FFFFFF;
+    --color-foreground: #131715;
+    --color-surface: #FAF9F7;
+    --color-border: #E7E3DE;
+
+    /* Primary (Brand Green) */
+    --color-primary: #0A6A56;
+    --color-primary-hover: #085A49;
+    --color-primary-pressed: #074A3C;
+
+    /* Accent (Brand Red) */
+    --color-accent: #A82B11;
+    --color-accent-hover: #8F250E;
+
+    /* Focus ring */
+    --color-focus: #A9CBC4;
+
+    /* Fonts */
+    --font-arabic: 'Noto Sans Arabic', system-ui, -apple-system, sans-serif;
+    --font-arabic-heading: 'Reem Kufi', system-ui, -apple-system, sans-serif;
+    --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-serif: 'Playfair Display', Georgia, serif;
+  }
+
+  [data-theme="dark"] {
+    /* Dark theme colors */
+    --color-background: #0B0D0C;
+    --color-foreground: #FFFFFF;
+    --color-surface: #121514;
+    --color-border: #1C201E;
+
+    /* Primary (lighter green for dark mode) */
+    --color-primary: #609E91;
+    --color-primary-hover: #0A6A56;
+    --color-primary-pressed: #085A49;
+
+    /* Accent (lighter red for dark mode) */
+    --color-accent: #C67564;
+    --color-accent-hover: #A82B11;
+
+    /* Focus ring */
+    --color-focus: #7FB3A8;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    @apply antialiased;
+    font-size: 16px;
+    line-height: 1.6;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-sans);
+    transition: background-color 200ms ease, color 200ms ease;
+  }
+
+  /* Arabic text styling */
+  html[lang="ar"] body,
+  [dir="rtl"] {
+    font-family: var(--font-arabic);
+  }
+
+  html[lang="ar"] h1,
+  html[lang="ar"] h2,
+  html[lang="ar"] h3,
+  html[lang="ar"] h4,
+  html[lang="ar"] h5,
+  html[lang="ar"] h6,
+  [dir="rtl"] h1,
+  [dir="rtl"] h2,
+  [dir="rtl"] h3,
+  [dir="rtl"] h4,
+  [dir="rtl"] h5,
+  [dir="rtl"] h6 {
+    font-family: var(--font-arabic-heading);
+  }
+
+  /* English headings */
+  html[lang="en"] h1,
+  html[lang="en"] h2,
+  html[lang="en"] h3,
+  [dir="ltr"] h1,
+  [dir="ltr"] h2,
+  [dir="ltr"] h3 {
+    font-family: var(--font-serif);
+  }
+
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight;
+  }
+
+  h2 {
+    @apply text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight;
+  }
+
+  h3 {
+    @apply text-2xl md:text-3xl lg:text-4xl font-semibold;
+  }
+
+  h4 {
+    @apply text-xl md:text-2xl font-semibold;
+  }
+
+  h5 {
+    @apply text-lg md:text-xl font-semibold;
+  }
+
+  h6 {
+    @apply text-base md:text-lg font-semibold;
+  }
+
+  /* Focus styles */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-offset-2;
+    ring-color: var(--color-focus);
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-surface;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-border rounded-lg;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-brand-green-500;
+  }
+
+  /* Selection */
+  ::selection {
+    @apply bg-brand-green-500 text-white;
+  }
+
+  [data-theme="dark"] ::selection {
+    @apply bg-brand-green-400 text-ink;
+  }
+}
+
+@layer components {
+  /* Container */
+  .container {
+    @apply mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl;
+  }
+
+  /* Skip to content link */
+  .skip-link {
+    @apply sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50;
+    @apply bg-primary text-white px-4 py-2 rounded-lg font-medium;
+  }
+
+  /* Text gradient */
+  .text-gradient {
+    @apply bg-gradient-to-r from-brand-green-500 to-brand-green-700 bg-clip-text text-transparent;
+  }
+
+  /* Glass effect */
+  .glass {
+    @apply backdrop-blur-md bg-white/80 border border-sand-200;
+  }
+
+  [data-theme="dark"] .glass {
+    @apply backdrop-blur-md border-border;
+    background-color: rgba(18, 21, 20, 0.8);
+  }
+
+  /* Card styles */
+  .card {
+    @apply bg-surface border border-border rounded-lg shadow-card;
+  }
+
+  /* Prose RTL support */
+  [dir="rtl"] .prose {
+    @apply text-right;
+  }
+
+  [dir="rtl"] .prose ul,
+  [dir="rtl"] .prose ol {
+    @apply pr-6 pl-0;
+  }
+}
+
+@layer utilities {
+  /* Text balance */
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Press animation */
+  .press-active:active {
+    transform: scale(0.98);
+  }
+
+  /* Sparkle effect */
+  .sparkle {
+    position: relative;
+  }
+
+  .sparkle::after {
+    content: '✨';
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    font-size: 0.75rem;
+    animation: sparkle 600ms cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+  }
+
+  [dir="rtl"] .sparkle::after {
+    right: auto;
+    left: -8px;
+  }
+}
