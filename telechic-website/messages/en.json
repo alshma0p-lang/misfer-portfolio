@@ -1,0 +1,344 @@
+{
+  "common": {
+    "appName": "TeleChic",
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "retry": "Retry",
+    "close": "Close",
+    "readMore": "Read More",
+    "learnMore": "Learn More",
+    "getStarted": "Get Started"
+  },
+  "nav": {
+    "home": "Home",
+    "features": "Features",
+    "demo": "Demo",
+    "scanner": "Ingredient Scanner",
+    "reports": "Reports",
+    "pricing": "Pricing",
+    "blog": "Blog",
+    "docs": "Docs",
+    "contact": "Contact",
+    "darkMode": "Dark Mode",
+    "lightMode": "Light Mode",
+    "language": "Language"
+  },
+  "hero": {
+    "tagline": "Smart beauty starts with your camera.",
+    "subtitle": "Simple commitment, visible results every 3 days.",
+    "primaryCTA": "Start Analysis",
+    "secondaryCTA": "Watch Demo",
+    "downloadOn": "Download on"
+  },
+  "features": {
+    "title": "Features",
+    "subtitle": "Discover everything TeleChic offers",
+    "skinAnalysis": {
+      "title": "Skin Analysis",
+      "subtitle": "Camera-based, non-medical guidance",
+      "points": [
+        "Instant results with actionable advice",
+        "Analyzes tone, texture, redness, pores, and spots",
+        "Personalized recommendations for your skin type"
+      ]
+    },
+    "hairAnalysis": {
+      "title": "Hair Analysis",
+      "subtitle": "Measure health and shine",
+      "points": [
+        "Assess frizz, shine, and volume",
+        "Care tips based on your hair type",
+        "Track hair health progress over time"
+      ]
+    },
+    "nailsVTO": {
+      "title": "Virtual Nail Try-On",
+      "subtitle": "Test colors before you buy",
+      "points": [
+        "Hundreds of nail polish shades",
+        "Instant AR application",
+        "Share your results with friends"
+      ]
+    },
+    "smileAnalysis": {
+      "title": "Smile Analysis",
+      "subtitle": "Cosmetic only, non-medical",
+      "points": [
+        "Assess symmetry and whiteness",
+        "Virtual whitening simulation",
+        "Oral health care tips"
+      ]
+    },
+    "tryOn": {
+      "title": "AR Try-On",
+      "subtitle": "Makeup and hair colors",
+      "points": [
+        "Try lipstick, eyeshadow, and hair colors",
+        "High-precision instant application",
+        "Save and share your favorite looks"
+      ]
+    },
+    "scanner": {
+      "title": "Ingredient Scanner",
+      "subtitle": "Know what's in your products",
+      "points": [
+        "Scan barcodes and labels with INCI matching",
+        "Match against your personal No-List",
+        "Warnings for common allergens and irritants"
+      ]
+    },
+    "progress": {
+      "title": "30-Day Progress",
+      "subtitle": "Simple commitment, visible results",
+      "points": [
+        "10 photos over 30 days (every 3 days)",
+        "Auto-alignment and reminders",
+        "Comprehensive PDF report with charts"
+      ]
+    },
+    "howItWorks": {
+      "title": "How It Works",
+      "steps": [
+        {
+          "title": "Capture",
+          "description": "Take a photo with your phone camera"
+        },
+        {
+          "title": "Get Report",
+          "description": "Receive instant analysis and recommendations"
+        },
+        {
+          "title": "30-Day Plan",
+          "description": "Track your progress over 30 days"
+        },
+        {
+          "title": "Export PDF",
+          "description": "Download your comprehensive report"
+        }
+      ]
+    }
+  },
+  "demo": {
+    "title": "Interactive Demo Mode",
+    "subtitle": "Try TeleChic without downloading",
+    "resetDemo": "Reset Demo",
+    "copyLink": "Copy Demo Link",
+    "linkCopied": "Link copied!",
+    "startDemo": "Start Demo",
+    "nextStep": "Next",
+    "previousStep": "Previous",
+    "finish": "Finish",
+    "steps": {
+      "skin": {
+        "title": "Skin Analysis",
+        "description": "See how TeleChic analyzes your skin",
+        "analyzing": "Analyzing skin...",
+        "complete": "Analysis complete!"
+      },
+      "hair": {
+        "title": "Hair Analysis",
+        "description": "Assess your hair health and shine",
+        "analyzing": "Analyzing hair...",
+        "complete": "Analysis complete!"
+      },
+      "tryOn": {
+        "title": "Try-On Colors",
+        "description": "Try different makeup colors",
+        "selectLook": "Select a look"
+      },
+      "scan": {
+        "title": "Ingredient Scanner",
+        "description": "Scan beauty product ingredients",
+        "scanBarcode": "Scan Barcode",
+        "pasteBarcode": "Paste Barcode",
+        "analyzing": "Analyzing ingredients...",
+        "complete": "Analysis complete!"
+      },
+      "progress": {
+        "title": "30-Day Progress",
+        "description": "See your progress over time",
+        "day": "Day",
+        "viewPDF": "View PDF Report"
+      }
+    }
+  },
+  "scanner": {
+    "title": "Ingredient Scanner",
+    "subtitle": "Scan ingredients, spot risks",
+    "uploadLabel": "Upload Label Photo",
+    "orEnterBarcode": "Or enter barcode number",
+    "barcodePlaceholder": "Enter barcode number...",
+    "scanButton": "Analyze Ingredients",
+    "analyzing": "Analyzing...",
+    "ingredients": "Ingredients",
+    "riskLevel": "Risk Level",
+    "safe": "Safe",
+    "caution": "Caution",
+    "avoid": "Avoid",
+    "noList": {
+      "title": "Personal No-List",
+      "description": "Add ingredients you want to avoid",
+      "add": "Add Ingredient",
+      "placeholder": "Ingredient name..."
+    }
+  },
+  "reports": {
+    "title": "Reports & Export",
+    "subtitle": "Download your comprehensive PDF report",
+    "description": "Get a detailed report in Arabic and English including:",
+    "includes": [
+      "Full skin and hair analysis",
+      "30-day progress charts",
+      "Personalized recommendations and tips",
+      "Ingredient scanner results",
+      "Aligned photos and comparisons"
+    ],
+    "samplePDF": "Sample PDF Report",
+    "downloadSample": "Download Sample",
+    "disclaimer": "TeleChic provides camera-based wellness/beauty guidance only. Not a medical device, diagnosis, or treatment."
+  },
+  "pricing": {
+    "title": "Pricing",
+    "subtitle": "Choose the plan that's right for you",
+    "free": {
+      "title": "Free",
+      "price": "0",
+      "currency": "SAR",
+      "period": "forever",
+      "features": [
+        "Skin & hair analysis",
+        "Basic ingredient scanner",
+        "Try-On colors (limited)",
+        "One PDF report"
+      ],
+      "cta": "Start Free"
+    },
+    "pro": {
+      "title": "Pro",
+      "price": "29",
+      "currency": "SAR",
+      "period": "per month",
+      "features": [
+        "All free features",
+        "Unlimited PDF reports",
+        "Advanced Try-On colors",
+        "Smile analysis",
+        "Extended No-List",
+        "Priority support"
+      ],
+      "cta": "Start Pro",
+      "popular": "Most Popular"
+    }
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Have a question? We're here to help",
+    "form": {
+      "name": "Name",
+      "namePlaceholder": "Enter your name...",
+      "email": "Email",
+      "emailPlaceholder": "your@email.com",
+      "purpose": "Purpose",
+      "purposePlaceholder": "Select a purpose...",
+      "message": "Message",
+      "messagePlaceholder": "How can we help you?",
+      "submit": "Send Message",
+      "submitting": "Sending...",
+      "success": "Your message was sent successfully!",
+      "error": "Failed to send message. Please try again."
+    },
+    "purposes": {
+      "general": "General Inquiry",
+      "support": "Technical Support",
+      "business": "Business Inquiry",
+      "feedback": "Feedback"
+    }
+  },
+  "footer": {
+    "tagline": "Smart beauty starts with your camera",
+    "disclaimer": "TeleChic provides camera-based wellness/beauty guidance only. Not a medical device, diagnosis, or treatment.",
+    "links": {
+      "product": "Product",
+      "company": "Company",
+      "legal": "Legal",
+      "support": "Support"
+    },
+    "copyright": "© {year} TeleChic. All rights reserved."
+  },
+  "consent": {
+    "title": "We use cookies",
+    "description": "We use cookies to analyze traffic and improve your experience. Your data is secure and PDPL-compliant.",
+    "acceptAll": "Accept All",
+    "rejectAll": "Reject All",
+    "customize": "Customize",
+    "necessary": "Necessary",
+    "necessaryDesc": "Required for site functionality",
+    "analytics": "Analytics",
+    "analyticsDesc": "Help us improve the site",
+    "savePreferences": "Save Preferences"
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "lastUpdated": "Last updated: {date}",
+    "intro": "We respect your privacy and are committed to protecting your personal data in accordance with the Personal Data Protection Law (PDPL)."
+  },
+  "terms": {
+    "title": "Terms of Service",
+    "lastUpdated": "Last updated: {date}",
+    "intro": "By using TeleChic, you agree to these terms and conditions."
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Latest news, tips, and guides",
+    "readMore": "Read More",
+    "readingTime": "{minutes} min read",
+    "publishedOn": "Published on {date}",
+    "by": "by {author}"
+  },
+  "docs": {
+    "title": "Documentation",
+    "subtitle": "FAQs, guides, and information",
+    "searchPlaceholder": "Search docs...",
+    "categories": {
+      "gettingStarted": "Getting Started",
+      "features": "Features",
+      "privacy": "Privacy & Data",
+      "troubleshooting": "Troubleshooting"
+    }
+  },
+  "designSystem": {
+    "title": "Design System",
+    "subtitle": "Colors, typography, and components",
+    "colors": {
+      "title": "Colors",
+      "brandGreen": "Brand Green",
+      "brandRed": "Brand Red - Accent",
+      "neutrals": "Neutrals"
+    },
+    "typography": {
+      "title": "Typography",
+      "headings": "Headings",
+      "body": "Body Text"
+    },
+    "components": {
+      "title": "Components",
+      "buttons": "Buttons",
+      "cards": "Cards",
+      "forms": "Forms"
+    }
+  },
+  "metrics": {
+    "tone": "Tone",
+    "texture": "Texture",
+    "redness": "Redness",
+    "pores": "Pores",
+    "spots": "Spots",
+    "frizz": "Frizz",
+    "shine": "Shine",
+    "volume": "Volume",
+    "excellent": "Excellent",
+    "good": "Good",
+    "fair": "Fair",
+    "poor": "Poor"
+  }
+}
