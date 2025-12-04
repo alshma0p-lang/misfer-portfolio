@@ -1,0 +1,49 @@
+[
+  {
+    "name": "TwinTech H2",
+    "role": "Co-founder & Product Lead",
+    "summary_en": "Building a hydrogen logistics intelligence layer that predicts supply and demand for the MENA region.",
+    "summary_ar": "بناء طبقة ذكاء لوجستي للهيدروجين تتنبأ بالعرض والطلب في منطقة الشرق الأوسط وشمال أفريقيا.",
+    "metrics": {
+      "pilotPartners": "3 energy operators",
+      "market": "GCC & North Africa",
+      "status": "MVP with live telemetry"
+    },
+    "targets": ["Energy utilities", "Port authorities", "Industrial offtakers"],
+    "cta": {
+      "label_en": "View deck",
+      "label_ar": "عرض العرض التقديمي",
+      "link": "https://example.com/twintech"
+    }
+  },
+  {
+    "name": "TeleChic",
+    "role": "Founder",
+    "summary_en": "A premium virtual styling concierge that pairs data-backed wardrobes with human stylists.",
+    "summary_ar": "خدمة تنسيق أزياء افتراضية فاخرة تجمع بين خزائن مدعومة بالبيانات وخبراء تنسيق بشريين.",
+    "metrics": {
+      "activeClients": "220 subscribers",
+      "conversion": "18% trial to paid",
+      "aov": "$240"
+    },
+    "targets": ["Luxury shoppers", "Personal stylists", "Retail partners"],
+    "cta": {
+      "label_en": "Join the waitlist",
+      "label_ar": "انضم لقائمة الانتظار",
+      "link": "https://example.com/telechic"
+    }
+  },
+  {
+    "name": "Misfer Labs",
+    "role": "Principal",
+    "summary_en": "A studio exploring frontier AI experiments with practical commercialization paths.",
+    "summary_ar": "استوديو يستكشف تجارب الذكاء الاصطناعي المتقدمة مع مسارات عملية للتجاري.",
+    "metrics": {
+      "projects": "5 prototypes",
+      "focus": "Applied AI",
+      "stage": "Incubation"
+    },
+    "targets": ["Enterprise innovation", "Product labs"],
+    "cta": null
+  }
+]
